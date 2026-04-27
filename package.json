@@ -2,10 +2,26 @@
   "name": "cusec-landing",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.33.0",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=10.33.0",
+      "onFail": "error"
+    }
+  },
+  "engines": {
+    "pnpm": ">=10.33.0",
+    "npm": ">=999.0.0",
+    "yarn": ">=999.0.0"
+  },
   "scripts": {
+    "preinstall": "node ./scripts/ensure-pnpm.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "lint": "biome lint .",
+    "format": "biome format --write .",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -17,6 +33,7 @@
     "@types/node": "^22.15.3",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
+    "@biomejs/biome": "^2.4.13",
     "typescript": "^5.8.3"
   }
 }

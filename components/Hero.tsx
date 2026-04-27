@@ -11,10 +11,9 @@ export function Hero() {
         </div>
         <div className="cusec-hero__intro">
           <p>
-            CUSEC is a non-profit organization hosting technology conferences
-            organized by students, for students. Founded in 2002, we host a
-            conference annually in early January, this year we are gearing up
-            for CUSEC 2027.
+            CUSEC is a non-profit organization hosting technology conferences organized by students,
+            for students. Founded in 2002, we host a conference annually in early January, this year
+            we are gearing up for CUSEC 2027.
           </p>
           <ButtonLink href="#">Visit CUSEC 2027's site</ButtonLink>
         </div>

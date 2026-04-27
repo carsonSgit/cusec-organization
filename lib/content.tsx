@@ -19,17 +19,15 @@ export type EditorialSectionContent = {
 
 export const testimonials: Testimonial[] = [
   {
-    quote:
-      "You will learn more at CUSEC in 3 days than your entire 1st year of university.",
+    quote: "You will learn more at CUSEC in 3 days than your entire 1st year of university.",
     attribution: "Michel Parisien, Student, Concordia University",
   },
   {
     quote: (
       <>
-        CUSEC has grown into <strong>the premier</strong> conference by computer
-        science students, for computer science students - across the whole of
-        Canada. It's too bad there isn't an equivalent student-run conference
-        for American computer science students.
+        CUSEC has grown into <strong>the premier</strong> conference by computer science students,
+        for computer science students - across the whole of Canada. It's too bad there isn't an
+        equivalent student-run conference for American computer science students.
       </>
     ),
     attribution: "Jeff Atwood, Co-Founder of StackOverflow",
@@ -59,26 +57,22 @@ export const editorialSections: EditorialSectionContent[] = [
     imageSide: "right",
     body: [
       <>
-        The Canadian University Software Engineering Conference is referred to
-        by many as the{" "}
-        <Highlight>gathering of the future of Software Engineering</Highlight>.
-        Students who are passionate about Software Engineering, from across
-        Canada and diverse concentrations, gather under one roof for three full
-        days to learn from the world's most famous and sought after software
-        engineering speakers, researchers and professionals.
+        The Canadian University Software Engineering Conference is referred to by many as the{" "}
+        <Highlight>gathering of the future of Software Engineering</Highlight>. Students who are
+        passionate about Software Engineering, from across Canada and diverse concentrations, gather
+        under one roof for three full days to learn from the world's most famous and sought after
+        software engineering speakers, researchers and professionals.
       </>,
       <>
-        It's not just about the presentations though. The conference gives you
-        the opportunity to meet others who share your passion - to see what your
-        peers are making and how they're experimenting in tech.{" "}
+        It's not just about the presentations though. The conference gives you the opportunity to
+        meet others who share your passion - to see what your peers are making and how they're
+        experimenting in tech.{" "}
         <Highlight>
-          CUSEC gives you the opportunity to have open conversations with the
-          figures shaping the industry as well as the people who build the
-          things we use every day.
+          CUSEC gives you the opportunity to have open conversations with the figures shaping the
+          industry as well as the people who build the things we use every day.
         </Highlight>{" "}
-        Allowing you to learn directly from the people you look up to. And don't
-        forget, we also have a growing career fair that might be of interest to
-        you.
+        Allowing you to learn directly from the people you look up to. And don't forget, we also
+        have a growing career fair that might be of interest to you.
       </>,
     ],
   },
@@ -94,16 +88,13 @@ export const editorialSections: EditorialSectionContent[] = [
     imageSide: "left",
     body: [
       <>
-        It doesn't matter if you're an undergrad in engineering or if you're
-        getting your MBA,{" "}
+        It doesn't matter if you're an undergrad in engineering or if you're getting your MBA,{" "}
         <Highlight>
-          if you're interested in the current state of the industry then CUSEC
-          is for you.
+          if you're interested in the current state of the industry then CUSEC is for you.
         </Highlight>{" "}
-        The conference is organized primarily with software engineering
-        undergrads and graduate students in mind. That does not mean that other
-        people cannot benefit, the program is always of the highest quality and
-        anyone who is interested can gain a lot from the conference.
+        The conference is organized primarily with software engineering undergrads and graduate
+        students in mind. That does not mean that other people cannot benefit, the program is always
+        of the highest quality and anyone who is interested can gain a lot from the conference.
       </>,
     ],
   },
