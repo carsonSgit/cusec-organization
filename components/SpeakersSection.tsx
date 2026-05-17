@@ -37,15 +37,17 @@ export function SpeakersSection() {
         {speakersData.length > 8 && (
           <div className="cusec-archive-actions">
             {!showAll ? (
-              <button 
-                onClick={() => setShowAll(true)} 
+              <button
+                type="button"
+                onClick={() => setShowAll(true)}
                 className="cusec-archive-more-btn"
               >
                 See More
               </button>
             ) : (
-              <button 
-                onClick={() => setShowAll(false)} 
+              <button
+                type="button"
+                onClick={() => setShowAll(false)}
                 className="cusec-archive-more-btn"
               >
                 See Less

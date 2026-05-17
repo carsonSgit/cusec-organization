@@ -29,15 +29,17 @@ export function SponsorsSection() {
         {sponsorsData.length > 12 && (
           <div className="cusec-sponsors-actions">
             {!showAll ? (
-              <button 
-                onClick={() => setShowAll(true)} 
+              <button
+                type="button"
+                onClick={() => setShowAll(true)}
                 className="cusec-archive-more-btn"
               >
                 See More
               </button>
             ) : (
-              <button 
-                onClick={() => setShowAll(false)} 
+              <button
+                type="button"
+                onClick={() => setShowAll(false)}
                 className="cusec-archive-more-btn"
               >
                 See Less
