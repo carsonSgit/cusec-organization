@@ -29,7 +29,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${karla.variable} ${ebGaramond.variable}`}>
-      <body>{children}</body>
+      <body>
+        <div className="cusec-paper-surface">
+          <div className="cusec-paper-overlay" />
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
