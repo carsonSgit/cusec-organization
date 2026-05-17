@@ -57,7 +57,7 @@ export function ArchiveSection() {
                 onClick={() => setShowAll(true)}
                 className="cusec-archive-more-btn"
               >
-                See More
+                See Full Archive
               </button>
             ) : (
               <button

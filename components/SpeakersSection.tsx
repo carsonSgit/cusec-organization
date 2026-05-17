@@ -42,7 +42,7 @@ export function SpeakersSection() {
                 onClick={() => setShowAll(true)}
                 className="cusec-archive-more-btn"
               >
-                See More
+                See All Speakers
               </button>
             ) : (
               <button
