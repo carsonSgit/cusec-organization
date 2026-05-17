@@ -4,11 +4,16 @@ import { ImageBand } from "@/components/ImageBand";
 import { PageShell } from "@/components/PageShell";
 import { StatsStatement } from "@/components/StatsStatement";
 import { TestimonialsGrid } from "@/components/TestimonialsGrid";
+import { ArchiveSection } from "@/components/ArchiveSection";
+import { SponsorsSection } from "@/components/SponsorsSection";
 import { editorialSections, testimonials } from "@/lib/content";
 import cusecBand from "../assets/cusec.png";
+import { SpeakersSection } from "@/components/SpeakersSection";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
+    <>
     <PageShell>
       <Hero />
       <ImageBand
@@ -20,6 +25,11 @@ export default function Home() {
       {editorialSections.map((section) => (
         <EditorialSection key={section.id} section={section} />
       ))}
+      <ArchiveSection />
+      <SponsorsSection />
+      <SpeakersSection />
     </PageShell>
+    <Footer />
+    </>
   );
 }
