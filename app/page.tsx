@@ -6,6 +6,7 @@ import { StatsStatement } from "@/components/StatsStatement";
 import { TestimonialsGrid } from "@/components/TestimonialsGrid";
 import { ArchiveSection } from "@/components/ArchiveSection";
 import { SponsorsSection } from "@/components/SponsorsSection";
+import { SchoolsSection } from "@/components/SchoolsSection";
 import { editorialSections, testimonials } from "@/lib/content";
 import cusecBand from "../assets/cusec.png";
 import { SpeakersSection } from "@/components/SpeakersSection";
@@ -28,6 +29,7 @@ export default function Home() {
       <ArchiveSection />
       <SponsorsSection />
       <SpeakersSection />
+      <SchoolsSection />
     </PageShell>
     <Footer />
     </>
