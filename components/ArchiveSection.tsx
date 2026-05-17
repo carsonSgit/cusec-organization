@@ -52,15 +52,17 @@ export function ArchiveSection() {
         {archiveData.length > 6 && (
           <div className="cusec-archive-actions">
             {!showAll ? (
-              <button 
-                onClick={() => setShowAll(true)} 
+              <button
+                type="button"
+                onClick={() => setShowAll(true)}
                 className="cusec-archive-more-btn"
               >
                 See Full Archive
               </button>
             ) : (
-              <button 
-                onClick={() => setShowAll(false)} 
+              <button
+                type="button"
+                onClick={() => setShowAll(false)}
                 className="cusec-archive-more-btn"
               >
                 See Less
