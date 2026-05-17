@@ -21,7 +21,7 @@ export function SchoolsSection() {
             <div key={region.name} className="cusec-schools-region">
               <h3 className="cusec-schools-region-title">{region.name}</h3>
               <div className="cusec-sponsors-grid">
-                {region.schools.slice(0, 5).map((school, i) => (
+                {region.schools.slice(0, 6).map((school, i) => (
                   <div key={`${region.name}-${i}`} className="cusec-school-item" title={school.name}>
                     {school.logo ? (
                       <Image src={school.logo} alt={`${school.name} Logo`} />
