@@ -26,7 +26,10 @@ export default function ParticipantSchoolsPage() {
                     {region.schools.map((school, idx) => (
                       <article key={`${region.name}-${idx}`} className="cusec-archive-item">
                         <div className="cusec-archive-item__header">
-                          <div className="cusec-archive-item__brand">
+                          <div 
+                            className="cusec-archive-item__brand"
+                            style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "1rem" }}
+                          >
                             {school.logo ? (
                               <div className="cusec-school-item" style={{ height: "clamp(3rem, 6vw, 4.5rem)", width: "auto", margin: 0, justifyContent: "flex-start", opacity: 1 }}>
                                 <Image src={school.logo} alt={`${school.name} Logo`} />
@@ -34,7 +37,6 @@ export default function ParticipantSchoolsPage() {
                             ) : null}
                             <h3>{school.name}</h3>
                           </div>
-                          <span className="cusec-archive-item__badge">University</span>
                         </div>
 
                         <div className="cusec-archive-item__content">
