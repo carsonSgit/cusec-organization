@@ -2,22 +2,26 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { archiveData } from "@/lib/archiveData";
+import { SectionHeading } from "@/components/SectionHeading";
+import { archiveData, featuredArchive } from "@/lib/archiveData";
 
 export function ArchiveSection() {
   const [showAll, setShowAll] = useState(false);
-  
-  const displayedYears = showAll ? archiveData : archiveData.slice(0, 6);
+
+  const displayedYears = showAll ? archiveData : featuredArchive;
 
   return (
     <section className="cusec-section cusec-archive-section" id="archive">
       <div className="cusec-section__inner">
-        <div className="cusec-archive-header">
-          <h2>
-            Past <em>Conferences</em>
-          </h2>
-          <p>Explore over two decades of CUSEC history, speakers, and events.</p>
-        </div>
+        <SectionHeading
+          title={
+            <>
+              Past <em>Conferences</em>
+            </>
+          }
+          lede="Explore over two decades of CUSEC history, speakers, and events."
+          align="left"
+        />
 
         <div className="cusec-archive-list">
           {displayedYears.map((item) => (
@@ -25,13 +29,18 @@ export function ArchiveSection() {
               <div className="cusec-archive-item__header">
                 <div className="cusec-archive-item__brand">
                   <div className="cusec-archive-item__logo">
-                    <Image src={item.logo} alt={`CUSEC ${item.year} Logo`} />
+                    <Image
+                      src={item.logo}
+                      alt={`CUSEC ${item.year} Logo`}
+                      quality={95}
+                      sizes="56px"
+                    />
                   </div>
                   <h3>{item.title}</h3>
                 </div>
                 {!item.url && <span className="cusec-archive-item__badge">Archived</span>}
               </div>
-              
+
               <div className="cusec-archive-item__content">
                 <p>{item.url ? item.info : item.detailedInfo}</p>
                 {item.url && (
@@ -41,7 +50,10 @@ export function ArchiveSection() {
                     rel="noopener noreferrer"
                     className="cusec-archive-link"
                   >
-                    Visit Site <span aria-hidden="true" className="cusec-button-link__arrow">-&gt;</span>
+                    Visit Site{" "}
+                    <span aria-hidden="true" className="cusec-button-link__arrow">
+                      -&gt;
+                    </span>
                   </a>
                 )}
               </div>

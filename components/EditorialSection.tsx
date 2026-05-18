@@ -17,7 +17,12 @@ export function EditorialSection({ section }: EditorialSectionProps) {
           ))}
         </div>
         <div className="cusec-editorial__media">
-          <Image src={section.image} alt={section.alt} sizes="(max-width: 720px) 100vw, 42vw" />
+          <Image
+            src={section.image}
+            alt={section.alt}
+            quality={95}
+            sizes="(max-width: 720px) 100vw, (max-width: 1728px) 42vw, 720px"
+          />
         </div>
       </article>
     </Section>

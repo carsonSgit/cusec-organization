@@ -1,4 +1,5 @@
 import type { StaticImageData } from "next/image";
+import { pickByKey } from "./pick";
 
 import algonquin from "../assets/school-logos/algonquin 1.png";
 import athabasca from "../assets/school-logos/athabasca 1.png";
@@ -150,5 +151,48 @@ export const regionsData: Region[] = [
       { name: "Université Canada West", logo: ucw, info: "Placeholder text for detailed school info." },
       { name: "Union College", logo: union, info: "Placeholder text for detailed school info." },
     ],
+  },
+];
+
+function region(name: string): Region {
+  return pickByKey(regionsData, "name", [name])[0];
+}
+
+function schoolsOf(regionName: string, schoolNames: string[]): School[] {
+  return pickByKey(region(regionName).schools, "name", schoolNames);
+}
+
+// The curated regions and schools shown on the landing page teaser.
+export const featuredRegions: Region[] = [
+  {
+    name: "Ontario",
+    schools: schoolsOf("Ontario", [
+      "University of Waterloo",
+      "University of Toronto",
+      "McMaster University",
+      "Queen's University",
+      "Western University",
+      "University of Ottawa",
+    ]),
+  },
+  {
+    name: "Quebec",
+    schools: schoolsOf("Quebec", [
+      "McGill University",
+      "Concordia University",
+      "Université de Montréal",
+      "Polytechnique Montréal",
+      "École de technologie supérieure (ÉTS)",
+      "Université du Québec à Montréal",
+    ]),
+  },
+  {
+    name: "British Columbia",
+    schools: schoolsOf("British Columbia", [
+      "University of British Columbia",
+      "Simon Fraser University",
+      "University of Victoria",
+      "Thompson Rivers University",
+    ]),
   },
 ];

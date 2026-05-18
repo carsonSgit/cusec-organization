@@ -424,11 +424,11 @@ a {
   padding-block: clamp(3rem, 8vw, 9.5rem);
 }
 
-.cusec-archive-header {
+.cusec-section-heading {
   margin-bottom: var(--section-gap-tight);
 }
 
-.cusec-archive-header h2 {
+.cusec-section-heading h2 {
   margin: 0;
   color: var(--color-ink);
   font-family: var(--font-ui);
@@ -439,11 +439,11 @@ a {
   text-wrap: balance;
 }
 
-.cusec-archive-header h2 em {
+.cusec-section-heading h2 em {
   font-style: italic;
 }
 
-.cusec-archive-header p {
+.cusec-section-heading p {
   max-width: var(--measure);
   margin-top: clamp(1.1rem, 2vw, 1.75rem);
   color: var(--color-body);
@@ -453,10 +453,23 @@ a {
   line-height: 1.13;
 }
 
+.cusec-section-heading--center {
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+  text-align: center;
+}
+
+.cusec-section-heading--center p {
+  margin: clamp(1.1rem, 2vw, 1.75rem) auto 0;
+}
+
 .cusec-archive-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3rem);
+}
+
+.cusec-historic-sponsors-list {
+  margin-top: 4rem;
 }
 
 .cusec-archive-item {
@@ -502,6 +515,19 @@ a {
   color: var(--color-ink);
 }
 
+.cusec-historic-sponsor__brand {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cusec-logo-tile--compact-left {
+  justify-content: flex-start;
+  width: auto;
+  height: clamp(3rem, 6vw, 4.5rem);
+  margin: 0;
+  opacity: 1;
+}
+
 .cusec-archive-item__badge {
   font-family: var(--font-ui);
   font-size: 0.8rem;
@@ -545,10 +571,6 @@ a {
   opacity: 0.7;
 }
 
-.cusec-archive-link__arrow {
-  font-feature-settings: "tnum";
-}
-
 .cusec-archive-actions {
   display: flex;
   justify-content: center;
@@ -587,36 +609,6 @@ a {
   padding-block: clamp(3rem, 8vw, 9.5rem);
 }
 
-.cusec-sponsors-header {
-  margin-bottom: clamp(3rem, 6vw, 5rem);
-  text-align: center;
-}
-
-.cusec-sponsors-header h2 {
-  margin: 0;
-  color: var(--color-ink);
-  font-family: var(--font-ui);
-  font-size: var(--type-heading);
-  font-weight: 400;
-  letter-spacing: -0.09em;
-  line-height: 1;
-  text-wrap: balance;
-}
-
-.cusec-sponsors-header h2 em {
-  font-style: italic;
-}
-
-.cusec-sponsors-header p {
-  max-width: var(--measure);
-  margin: clamp(1.1rem, 2vw, 1.75rem) auto 0;
-  color: var(--color-body);
-  font-family: var(--font-editorial);
-  font-size: var(--type-body);
-  letter-spacing: -0.01em;
-  line-height: 1.13;
-}
-
 .cusec-sponsors-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
@@ -626,33 +618,48 @@ a {
 }
 
 @keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes scroll-right {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .cusec-marquee-container {
-  width: 100vw;
-  max-width: 100%;
-  margin-left: 50%;
-  transform: translateX(-50%);
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: clamp(2rem, 5vw, 4rem);
+  width: 100vw;
+  max-width: 100%;
+  margin-left: 50%;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(-50%);
   mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  transition: opacity 260ms ease;
+}
+
+.cusec-marquee-container--ready {
+  opacity: 1;
 }
 
 .cusec-marquee-track {
   display: flex;
+  align-items: center;
   gap: clamp(4rem, 8vw, 8rem);
   width: max-content;
-  align-items: center;
+  will-change: transform;
 }
 
 .cusec-marquee-track--right {
@@ -663,25 +670,17 @@ a {
   animation: scroll-left 40s linear infinite;
 }
 
-.cusec-sponsor-item {
-  width: 100%;
-  max-width: 14rem;
-  height: clamp(3rem, 6vw, 5rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.8;
-  transition: opacity 200ms ease;
+.cusec-marquee-container:not(.cusec-marquee-container--ready) .cusec-marquee-track {
+  animation-play-state: paused;
 }
 
-.cusec-sponsor-item:hover {
-  opacity: 1;
+.cusec-marquee-container--ready .cusec-marquee-track {
+  animation-play-state: running;
 }
 
-.cusec-sponsor-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+.cusec-marquee-logo {
+  max-width: 12.8rem;
+  height: clamp(3.2rem, 6.4vw, 4.8rem);
 }
 
 .cusec-sponsors-actions {
@@ -741,6 +740,14 @@ a {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cusec-marquee-track {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
 }
 
 /* --- Speakers Section --- */

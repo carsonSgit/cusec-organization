@@ -1,7 +1,8 @@
-import { PageShell } from "@/components/PageShell";
-import { sponsorsData } from "@/lib/sponsorsData";
 import { Footer } from "@/components/Footer";
-import Image from "next/image";
+import { LogoTile } from "@/components/LogoTile";
+import { PageShell } from "@/components/PageShell";
+import { SectionHeading } from "@/components/SectionHeading";
+import { sponsorsData } from "@/lib/sponsorsData";
 
 export default function HistoricSponsorsPage() {
   return (
@@ -9,37 +10,28 @@ export default function HistoricSponsorsPage() {
       <PageShell>
         <section className="cusec-section cusec-archive-section">
           <div className="cusec-section__inner">
-            <div className="cusec-archive-header">
-              <h2>
-                Historic <em>Sponsors</em>
-              </h2>
-              <p>Meet the amazing partners who have supported CUSEC throughout the years.</p>
-            </div>
+            <SectionHeading
+              title={
+                <>
+                  Historic <em>Sponsors</em>
+                </>
+              }
+              lede="Meet the amazing partners who have supported CUSEC throughout the years."
+              align="left"
+            />
 
-            <div className="cusec-archive-list" style={{ marginTop: "4rem" }}>
-              {sponsorsData.map((sponsor, idx) => (
-                <article key={idx} className="cusec-archive-item">
+            <div className="cusec-archive-list cusec-historic-sponsors-list">
+              {sponsorsData.map((sponsor) => (
+                <article key={sponsor.name} className="cusec-archive-item">
                   <div className="cusec-archive-item__header">
-                    <div
-                        className="cusec-archive-item__brand"
-                        style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}
-                        >
-                        {sponsor.logo ? (
-                            <div
-                                className="cusec-school-item"
-                                style={{
-                                    height: "clamp(3rem, 6vw, 4.5rem)",
-                                    width: "auto",
-                                    margin: 0,
-                                    justifyContent: "flex-start",
-                                    opacity: 1,
-                                }}
-                                >
-                                <Image src={sponsor.logo} alt={`${sponsor.name} Logo`} />
-                            </div>
-                        ) : null}
+                    <div className="cusec-archive-item__brand cusec-historic-sponsor__brand">
+                      <LogoTile
+                        name={sponsor.name}
+                        logo={sponsor.logo}
+                        variant="compact-left"
+                      />
 
-                        <h3>{sponsor.name}</h3>
+                      <h3>{sponsor.name}</h3>
                     </div>
                   </div>
 

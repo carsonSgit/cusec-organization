@@ -1,21 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { speakersData } from "@/lib/speakersData";
+import { SectionHeading } from "@/components/SectionHeading";
+import { featuredSpeakers, speakersData } from "@/lib/speakersData";
 
 export function SpeakersSection() {
   const [showAll, setShowAll] = useState(false);
-  const displayedSpeakers = showAll ? speakersData : speakersData.slice(0, 9);
+  const displayedSpeakers = showAll ? speakersData : featuredSpeakers;
 
   return (
     <section className="cusec-section cusec-speakers-section" id="speakers">
       <div className="cusec-section__inner">
-        <div className="cusec-archive-header">
-          <h2>
-            Legendary <em>Speakers</em>
-          </h2>
-          <p>Learn from some of the most influential minds in software engineering, design, and technology.</p>
-        </div>
+        <SectionHeading
+          title={
+            <>
+              Legendary <em>Speakers</em>
+            </>
+          }
+          lede="Learn from some of the most influential minds in software engineering, design, and technology."
+          align="left"
+        />
 
         <div className="cusec-speakers-list">
           {displayedSpeakers.map((speaker, idx) => (
@@ -23,11 +27,11 @@ export function SpeakersSection() {
               <div className="cusec-speaker-item__content">
                 <h3>{speaker.name}</h3>
                 <p>{speaker.description}</p>
-                <a
-                  href={speaker.url}
-                  className="cusec-archive-link"
-                >
-                  Learn More <span aria-hidden="true" className="cusec-button-link__arrow">-&gt;</span>
+                <a href={speaker.url} className="cusec-archive-link">
+                  Learn More{" "}
+                  <span aria-hidden="true" className="cusec-button-link__arrow">
+                    -&gt;
+                  </span>
                 </a>
               </div>
             </article>
