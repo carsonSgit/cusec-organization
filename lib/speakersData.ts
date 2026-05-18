@@ -74,8 +74,8 @@ export const speakersData: Speaker[] = [
   },
   {
     name: "Alex Karp",
-    description: "CEO and co-founder of Palantir Technologies",
-    url: "https://en.wikipedia.org/wiki/Alex_Karp"
+    description: "Author of 'Running Start: How to get a job in tech, keep that job, and thrive'. Engineering manager at Thumbtack, ",
+    url: "https://www.alexkarp.net/"
   },
   {
     name: "Joelle Pineau",
