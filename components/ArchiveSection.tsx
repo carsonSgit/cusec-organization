@@ -2,22 +2,26 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { archiveData } from "@/lib/archiveData";
+import { SectionHeading } from "@/components/SectionHeading";
+import { archiveData, featuredArchive } from "@/lib/archiveData";
 
 export function ArchiveSection() {
   const [showAll, setShowAll] = useState(false);
 
-  const displayedYears = showAll ? archiveData : archiveData.slice(0, 6);
+  const displayedYears = showAll ? archiveData : featuredArchive;
 
   return (
     <section className="cusec-section cusec-archive-section" id="archive">
       <div className="cusec-section__inner">
-        <div className="cusec-archive-header">
-          <h2>
-            Past <em>Conferences</em>
-          </h2>
-          <p>Explore over two decades of CUSEC history, speakers, and events.</p>
-        </div>
+        <SectionHeading
+          title={
+            <>
+              Past <em>Conferences</em>
+            </>
+          }
+          lede="Explore over two decades of CUSEC history, speakers, and events."
+          align="left"
+        />
 
         <div className="cusec-archive-list">
           {displayedYears.map((item) => (

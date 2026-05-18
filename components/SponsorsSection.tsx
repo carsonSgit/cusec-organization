@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useMemo, useState } from "react";
 import { ButtonLink } from "@/components/ButtonLink";
+import { SectionHeading } from "@/components/SectionHeading";
 import { sponsorMarqueeRows, type Sponsor } from "@/lib/sponsorsData";
 
 const HIGH_PRIORITY_LOGO_COUNT = 4;
@@ -69,15 +70,15 @@ export function SponsorsSection() {
   return (
     <section className="cusec-section cusec-sponsors-section" id="sponsors">
       <div className="cusec-section__inner">
-        <div className="cusec-sponsors-header">
-          <h2>
-            Supported by the <em>Best</em>
-          </h2>
-          <p>
-            CUSEC wouldn't be possible without our amazing sponsors who have supported us over the
-            years.
-          </p>
-        </div>
+        <SectionHeading
+          title={
+            <>
+              Supported by the <em>Best</em>
+            </>
+          }
+          lede="CUSEC wouldn't be possible without our amazing sponsors who have supported us over the years."
+          align="center"
+        />
 
         <div
           className={`cusec-marquee-container${

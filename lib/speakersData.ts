@@ -1,3 +1,5 @@
+import { pickByKey } from "./pick";
+
 export type Speaker = {
   name: string;
   description: string;
@@ -106,3 +108,16 @@ export const speakersData: Speaker[] = [
     url: "#"
   }
 ];
+
+// The curated set shown on the landing page before "See All Speakers".
+export const featuredSpeakers: Speaker[] = pickByKey(speakersData, "name", [
+  "Kent Beck",
+  "Richard Stallman",
+  "Joel Spolsky",
+  "Jeff Atwood",
+  "Alexis Ohanian",
+  "David Heinemeier Hansson",
+  "Douglas Crockford",
+  "Bruce Schneier",
+  "Bret Victor",
+]);

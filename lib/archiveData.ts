@@ -1,4 +1,5 @@
 import type { StaticImageData } from "next/image";
+import { pickByKey } from "./pick";
 import logo2003 from "../assets/cusec-logos/2003.png";
 import logo2004 from "../assets/cusec-logos/2004.png";
 import logo2005 from "../assets/cusec-logos/2005.png";
@@ -203,3 +204,8 @@ export const archiveData: ArchiveYear[] = [
     detailedInfo: "The second-ever CUSEC proved that the inaugural event was no fluke. It cemented the need for a dedicated, student-run software engineering conference in Canada, providing an essential platform for students to learn from industry veterans and connect with like-minded peers early in their careers.",
   }
 ];
+
+// The curated years shown on the landing page before "See Full Archive".
+export const featuredArchive: ArchiveYear[] = pickByKey(archiveData, "year", [
+  2026, 2025, 2024, 2023, 2022, 2021,
+]);

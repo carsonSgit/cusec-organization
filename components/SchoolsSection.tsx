@@ -1,42 +1,35 @@
 "use client";
 
-import Image from "next/image";
-import { regionsData } from "@/lib/schoolsData";
 import { ButtonLink } from "@/components/ButtonLink";
+import { LogoTile } from "@/components/LogoTile";
+import { SectionHeading } from "@/components/SectionHeading";
+import { featuredRegions } from "@/lib/schoolsData";
 
 export function SchoolsSection() {
   return (
     <section className="cusec-section cusec-schools-section" id="schools">
       <div className="cusec-section__inner">
-        <div className="cusec-sponsors-header">
-          <h2>
-            From Across <em>the Country</em>
-          </h2>
-          <p>We've welcomed students from a wide range of universities and colleges.</p>
-        </div>
+        <SectionHeading
+          title={
+            <>
+              From Across <em>the Country</em>
+            </>
+          }
+          lede="We've welcomed students from a wide range of universities and colleges."
+          align="center"
+        />
 
         <div className="cusec-schools-regions">
-          {regionsData.slice(0, 3).map((region) => (
+          {featuredRegions.map((region) => (
             <div key={region.name} className="cusec-schools-region">
               <h3 className="cusec-schools-region-title">{region.name}</h3>
               <div className="cusec-sponsors-grid">
-                {region.schools.slice(0, 6).map((school) => (
-                  <div
+                {region.schools.map((school) => (
+                  <LogoTile
                     key={`${region.name}-${school.name}`}
-                    className="cusec-school-item"
-                    title={school.name}
-                  >
-                    {school.logo ? (
-                      <Image
-                        src={school.logo}
-                        alt={`${school.name} Logo`}
-                        quality={95}
-                        sizes="160px"
-                      />
-                    ) : (
-                      <span className="cusec-school-name-fallback">{school.name}</span>
-                    )}
-                  </div>
+                    name={school.name}
+                    logo={school.logo}
+                  />
                 ))}
               </div>
             </div>

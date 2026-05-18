@@ -1,4 +1,5 @@
 import type { StaticImageData } from "next/image";
+import { pickByKey } from "./pick";
 import onepassword from "../assets/sponsor-logos/1password-logo.png";
 import accenture from "../assets/sponsor-logos/accenture_logo.png";
 import adobe from "../assets/sponsor-logos/adobe-logo.png";
@@ -174,15 +175,7 @@ export const sponsorsData: Sponsor[] = [
 ];
 
 function sponsorsByName(names: string[]): Sponsor[] {
-  return names.map((name) => {
-    const sponsor = sponsorsData.find((candidate) => candidate.name === name);
-
-    if (!sponsor) {
-      throw new Error(`Missing sponsor data for ${name}`);
-    }
-
-    return sponsor;
-  });
+  return pickByKey(sponsorsData, "name", names);
 }
 
 export const sponsorMarqueeRows = {

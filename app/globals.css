@@ -424,11 +424,11 @@ a {
   padding-block: clamp(3rem, 8vw, 9.5rem);
 }
 
-.cusec-archive-header {
+.cusec-section-heading {
   margin-bottom: var(--section-gap-tight);
 }
 
-.cusec-archive-header h2 {
+.cusec-section-heading h2 {
   margin: 0;
   color: var(--color-ink);
   font-family: var(--font-ui);
@@ -439,11 +439,11 @@ a {
   text-wrap: balance;
 }
 
-.cusec-archive-header h2 em {
+.cusec-section-heading h2 em {
   font-style: italic;
 }
 
-.cusec-archive-header p {
+.cusec-section-heading p {
   max-width: var(--measure);
   margin-top: clamp(1.1rem, 2vw, 1.75rem);
   color: var(--color-body);
@@ -451,6 +451,15 @@ a {
   font-size: var(--type-body);
   letter-spacing: -0.01em;
   line-height: 1.13;
+}
+
+.cusec-section-heading--center {
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+  text-align: center;
+}
+
+.cusec-section-heading--center p {
+  margin: clamp(1.1rem, 2vw, 1.75rem) auto 0;
 }
 
 .cusec-archive-list {
@@ -511,7 +520,7 @@ a {
   align-items: flex-start;
 }
 
-.cusec-historic-sponsor__logo {
+.cusec-logo-tile--compact-left {
   justify-content: flex-start;
   width: auto;
   height: clamp(3rem, 6vw, 4.5rem);
@@ -598,36 +607,6 @@ a {
 
 .cusec-sponsors-section {
   padding-block: clamp(3rem, 8vw, 9.5rem);
-}
-
-.cusec-sponsors-header {
-  margin-bottom: clamp(3rem, 6vw, 5rem);
-  text-align: center;
-}
-
-.cusec-sponsors-header h2 {
-  margin: 0;
-  color: var(--color-ink);
-  font-family: var(--font-ui);
-  font-size: var(--type-heading);
-  font-weight: 400;
-  letter-spacing: -0.09em;
-  line-height: 1;
-  text-wrap: balance;
-}
-
-.cusec-sponsors-header h2 em {
-  font-style: italic;
-}
-
-.cusec-sponsors-header p {
-  max-width: var(--measure);
-  margin: clamp(1.1rem, 2vw, 1.75rem) auto 0;
-  color: var(--color-body);
-  font-family: var(--font-editorial);
-  font-size: var(--type-body);
-  letter-spacing: -0.01em;
-  line-height: 1.13;
 }
 
 .cusec-sponsors-grid {
