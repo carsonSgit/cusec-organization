@@ -10,102 +10,102 @@ export const speakersData: Speaker[] = [
   {
     name: "Kent Beck",
     description: "Software engineer and creator of Extreme Programming (XP), influential in Agile software development",
-    url: "#"
+    url: "https://kentbeck.com/"
   },
   {
     name: "Richard Stallman",
     description: "Founder of the GNU Project and Free Software Movement",
-    url: "#"
+    url: "https://stallman.org/"
   },
   {
     name: "Joel Spolsky",
     description: "Software developer, writer, and co-founder of Stack Overflow and Trello",
-    url: "#"
+    url: "https://www.joelonsoftware.com/"
   },
   {
     name: "Jeff Atwood",
     description: "Co-founder of Stack Overflow and programming blogger behind Coding Horror",
-    url: "#"
+    url: "https://blog.codinghorror.com/"
   },
   {
     name: "Alexis Ohanian",
     description: "Entrepreneur and co-founder of Reddit",
-    url: "#"
+    url: "https://en.wikipedia.org/wiki/Alexis_Ohanian"
   },
   {
     name: "David Heinemeier Hansson",
     description: "Creator of Ruby on Rails and co-owner/CTO of Basecamp",
-    url: "#"
+    url: "https://dhh.dk/"
   },
   {
     name: "Douglas Crockford",
     description: "Computer programmer best known for popularizing JSON",
-    url: "#"
+    url: "https://www.crockford.com/"
   },
   {
     name: "Bruce Schneier",
     description: "Cybersecurity expert, cryptographer, and security author",
-    url: "#"
+    url: "https://www.schneier.com/"
   },
   {
     name: "Bret Victor",
     description: "Interface designer and computer scientist known for interactive computing concepts",
-    url: "#"
+    url: "http://worrydream.com/"
   },
   {
     name: "Greg Kroah-Hartman",
     description: "Linux kernel developer and maintainer",
-    url: "#"
+    url: "https://en.wikipedia.org/wiki/Greg_Kroah-Hartman"
   },
   {
     name: "Grady Booch",
     description: "Software engineer and co-creator of UML (Unified Modeling Language)",
-    url: "#"
+    url: "https://en.wikipedia.org/wiki/Grady_Booch"
   },
   {
     name: "Jeff Ullman",
     description: "Stanford computer science professor known for databases and compiler theory",
-    url: "#"
+    url: "https://profiles.stanford.edu/jeffrey-ullman"
   },
   {
     name: "Michael Seibel",
     description: "Entrepreneur, former CEO of Twitch, and partner at Y Combinator",
-    url: "#"
+    url: "https://www.michaelseibel.com/"
   },
   {
     name: "Alex Karp",
-    description: "CEO and co-founder of Palantir Technologies",
-    url: "#"
+    description: "Author of 'Running Start: How to get a job in tech, keep that job, and thrive'. Engineering manager at Thumbtack, ",
+    url: "https://www.alexkarp.net/"
   },
   {
     name: "Joelle Pineau",
     description: "AI researcher, professor at McGill University, and former Meta AI leader",
-    url: "#"
+    url: "https://www.cs.mcgill.ca/~jpineau/"
   },
   {
     name: "Yehuda Katz",
     description: "Open source developer known for Ember.js, Ruby on Rails, and Rust contributions",
-    url: "#"
+    url: "https://yehudakatz.com/"
   },
   {
     name: "Aaron Patterson",
     description: "Ruby core developer and major contributor to Ruby on Rails",
-    url: "#"
+    url: "https://tenderlovemaking.com/"
   },
   {
     name: "Julia Evans",
     description: "Software engineer and educator known for approachable programming zines and systems content",
-    url: "#"
+    url: "https://jvns.ca/"
   },
   {
     name: "Kathy Sierra",
     description: "Programming educator and co-creator of the Head First book series",
-    url: "#"
+    url: "https://en.wikipedia.org/wiki/Kathy_Sierra"
   },
   {
     name: "Sandi Metz",
     description: "Software architect and author known for object-oriented design and Ruby expertise",
-    url: "#"
+    url: "https://sandimetz.com/"
   }
 ];
 
