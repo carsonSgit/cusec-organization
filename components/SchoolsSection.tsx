@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { regionsData } from "@/lib/schoolsData";
 import { ButtonLink } from "@/components/ButtonLink";
 
@@ -21,10 +20,19 @@ export function SchoolsSection() {
             <div key={region.name} className="cusec-schools-region">
               <h3 className="cusec-schools-region-title">{region.name}</h3>
               <div className="cusec-sponsors-grid">
-                {region.schools.slice(0, 6).map((school, i) => (
-                  <div key={`${region.name}-${i}`} className="cusec-school-item" title={school.name}>
+                {region.schools.slice(0, 6).map((school) => (
+                  <div
+                    key={`${region.name}-${school.name}`}
+                    className="cusec-school-item"
+                    title={school.name}
+                  >
                     {school.logo ? (
-                      <Image src={school.logo} alt={`${school.name} Logo`} />
+                      <Image
+                        src={school.logo}
+                        alt={`${school.name} Logo`}
+                        quality={95}
+                        sizes="160px"
+                      />
                     ) : (
                       <span className="cusec-school-name-fallback">{school.name}</span>
                     )}

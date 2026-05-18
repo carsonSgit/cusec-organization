@@ -14,7 +14,10 @@ export function SpeakersSection() {
           <h2>
             Legendary <em>Speakers</em>
           </h2>
-          <p>Learn from some of the most influential minds in software engineering, design, and technology.</p>
+          <p>
+            Learn from some of the most influential minds in software engineering, design, and
+            technology.
+          </p>
         </div>
 
         <div className="cusec-speakers-list">
@@ -23,11 +26,11 @@ export function SpeakersSection() {
               <div className="cusec-speaker-item__content">
                 <h3>{speaker.name}</h3>
                 <p>{speaker.description}</p>
-                <a
-                  href={speaker.url}
-                  className="cusec-archive-link"
-                >
-                  Learn More <span aria-hidden="true" className="cusec-button-link__arrow">-&gt;</span>
+                <a href={speaker.url} className="cusec-archive-link">
+                  Learn More{" "}
+                  <span aria-hidden="true" className="cusec-button-link__arrow">
+                    -&gt;
+                  </span>
                 </a>
               </div>
             </article>

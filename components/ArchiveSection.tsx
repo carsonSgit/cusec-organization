@@ -6,7 +6,7 @@ import { archiveData } from "@/lib/archiveData";
 
 export function ArchiveSection() {
   const [showAll, setShowAll] = useState(false);
-  
+
   const displayedYears = showAll ? archiveData : archiveData.slice(0, 6);
 
   return (
@@ -25,13 +25,18 @@ export function ArchiveSection() {
               <div className="cusec-archive-item__header">
                 <div className="cusec-archive-item__brand">
                   <div className="cusec-archive-item__logo">
-                    <Image src={item.logo} alt={`CUSEC ${item.year} Logo`} />
+                    <Image
+                      src={item.logo}
+                      alt={`CUSEC ${item.year} Logo`}
+                      quality={95}
+                      sizes="56px"
+                    />
                   </div>
                   <h3>{item.title}</h3>
                 </div>
                 {!item.url && <span className="cusec-archive-item__badge">Archived</span>}
               </div>
-              
+
               <div className="cusec-archive-item__content">
                 <p>{item.url ? item.info : item.detailedInfo}</p>
                 {item.url && (
@@ -41,7 +46,10 @@ export function ArchiveSection() {
                     rel="noopener noreferrer"
                     className="cusec-archive-link"
                   >
-                    Visit Site <span aria-hidden="true" className="cusec-button-link__arrow">-&gt;</span>
+                    Visit Site{" "}
+                    <span aria-hidden="true" className="cusec-button-link__arrow">
+                      -&gt;
+                    </span>
                   </a>
                 )}
               </div>

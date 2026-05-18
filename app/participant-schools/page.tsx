@@ -13,12 +13,19 @@ export default function ParticipantSchoolsPage() {
               <h2>
                 Participating <em>Schools</em>
               </h2>
-              <p>Discover the vast network of universities and colleges that have joined CUSEC over the years.</p>
+              <p>
+                Discover the vast network of universities and colleges that have joined CUSEC over
+                the years.
+              </p>
             </div>
 
             <div className="cusec-schools-regions">
               {regionsData.map((region) => (
-                <div key={region.name} className="cusec-schools-region" style={{ marginTop: "4rem" }}>
+                <div
+                  key={region.name}
+                  className="cusec-schools-region"
+                  style={{ marginTop: "4rem" }}
+                >
                   <h3 className="cusec-schools-region-title" style={{ textAlign: "left" }}>
                     {region.name}
                   </h3>
@@ -26,12 +33,26 @@ export default function ParticipantSchoolsPage() {
                     {region.schools.map((school, idx) => (
                       <article key={`${region.name}-${idx}`} className="cusec-archive-item">
                         <div className="cusec-archive-item__header">
-                          <div 
+                          <div
                             className="cusec-archive-item__brand"
-                            style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "1rem" }}
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems: "flex-start",
+                              gap: "1rem",
+                            }}
                           >
                             {school.logo ? (
-                              <div className="cusec-school-item" style={{ height: "clamp(3rem, 6vw, 4.5rem)", width: "auto", margin: 0, justifyContent: "flex-start", opacity: 1 }}>
+                              <div
+                                className="cusec-school-item"
+                                style={{
+                                  height: "clamp(3rem, 6vw, 4.5rem)",
+                                  width: "auto",
+                                  margin: 0,
+                                  justifyContent: "flex-start",
+                                  opacity: 1,
+                                }}
+                              >
                                 <Image src={school.logo} alt={`${school.name} Logo`} />
                               </div>
                             ) : null}

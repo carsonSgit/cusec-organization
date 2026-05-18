@@ -1,7 +1,7 @@
+import Image from "next/image";
+import { Footer } from "@/components/Footer";
 import { PageShell } from "@/components/PageShell";
 import { sponsorsData } from "@/lib/sponsorsData";
-import { Footer } from "@/components/Footer";
-import Image from "next/image";
 
 export default function HistoricSponsorsPage() {
   return (
@@ -16,30 +16,21 @@ export default function HistoricSponsorsPage() {
               <p>Meet the amazing partners who have supported CUSEC throughout the years.</p>
             </div>
 
-            <div className="cusec-archive-list" style={{ marginTop: "4rem" }}>
-              {sponsorsData.map((sponsor, idx) => (
-                <article key={idx} className="cusec-archive-item">
+            <div className="cusec-archive-list cusec-historic-sponsors-list">
+              {sponsorsData.map((sponsor) => (
+                <article key={sponsor.name} className="cusec-archive-item">
                   <div className="cusec-archive-item__header">
-                    <div
-                        className="cusec-archive-item__brand"
-                        style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}
-                        >
-                        {sponsor.logo ? (
-                            <div
-                                className="cusec-school-item"
-                                style={{
-                                    height: "clamp(3rem, 6vw, 4.5rem)",
-                                    width: "auto",
-                                    margin: 0,
-                                    justifyContent: "flex-start",
-                                    opacity: 1,
-                                }}
-                                >
-                                <Image src={sponsor.logo} alt={`${sponsor.name} Logo`} />
-                            </div>
-                        ) : null}
+                    <div className="cusec-archive-item__brand cusec-historic-sponsor__brand">
+                      <div className="cusec-school-item cusec-historic-sponsor__logo">
+                        <Image
+                          src={sponsor.logo}
+                          alt={`${sponsor.name} Logo`}
+                          quality={95}
+                          sizes="160px"
+                        />
+                      </div>
 
-                        <h3>{sponsor.name}</h3>
+                      <h3>{sponsor.name}</h3>
                     </div>
                   </div>
 

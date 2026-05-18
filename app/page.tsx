@@ -15,23 +15,23 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
   return (
     <>
-    <PageShell>
-      <Hero />
-      <ImageBand
-        src={cusecBand}
-        alt="CUSEC attendees gathered for a group photo in a conference hall."
-      />
-      <StatsStatement />
-      <TestimonialsGrid testimonials={testimonials} />
-      {editorialSections.map((section) => (
-        <EditorialSection key={section.id} section={section} />
-      ))}
-      <ArchiveSection />
-      <SponsorsSection />
-      <SpeakersSection />
-      <SchoolsSection />
-    </PageShell>
-    <Footer />
+      <PageShell>
+        <Hero />
+        <ImageBand
+          src={cusecBand}
+          alt="CUSEC attendees gathered for a group photo in a conference hall."
+        />
+        <StatsStatement />
+        <TestimonialsGrid testimonials={testimonials} />
+        {editorialSections.map((section) => (
+          <EditorialSection key={section.id} section={section} />
+        ))}
+        <ArchiveSection />
+        <SponsorsSection />
+        <SpeakersSection />
+        <SchoolsSection />
+      </PageShell>
+      <Footer />
     </>
   );
 }
