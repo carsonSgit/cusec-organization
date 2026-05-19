@@ -1,10 +1,10 @@
 import { Footer } from "@/components/Footer";
+import { PastSpeakersBrowser } from "@/components/PastSpeakersBrowser";
 import { PageShell } from "@/components/PageShell";
 import { SectionHeading } from "@/components/SectionHeading";
-import { ParticipantSchoolsBrowser } from "@/components/ParticipantSchoolsBrowser";
-import { regionsData } from "@/lib/schoolsData";
+import { speakersData } from "@/lib/speakersData";
 
-export default function ParticipantSchoolsPage() {
+export default function PastSpeakersPage() {
   return (
     <>
       <PageShell>
@@ -13,14 +13,14 @@ export default function ParticipantSchoolsPage() {
             <SectionHeading
               title={
                 <>
-                  Participating <em>Schools</em>
+                  Past <em>Speakers</em>
                 </>
               }
-              lede="Discover the vast network of universities and colleges that have joined CUSEC over the years."
+              lede="Meet the amazing individuals who have spoken at CUSEC throughout the years."
               align="left"
             />
 
-            <ParticipantSchoolsBrowser regions={regionsData} />
+            <PastSpeakersBrowser speakers={speakersData} />
           </div>
         </section>
       </PageShell>
