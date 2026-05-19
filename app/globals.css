@@ -945,6 +945,153 @@ a {
   line-height: 1.3;
 }
 
+/* --- School Archive Section (Client) --- */
+
+.cusec-schools-browser {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.cusec-school-filter {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.74fr) minmax(0, 1.6fr);
+  gap: clamp(1.1rem, 3vw, 2rem);
+  align-items: end;
+}
+
+.cusec-school-filter__summary {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.cusec-school-filter__summary strong {
+  color: var(--color-ink);
+  font-family: var(--font-ui);
+  font-size: clamp(1.65rem, 3vw, 2.55rem);
+  font-weight: 400;
+  letter-spacing: -0.07em;
+  line-height: 0.95;
+}
+
+.cusec-school-filter__summary p {
+  max-width: 45ch;
+  margin: 0;
+  color: var(--color-body);
+  font-family: var(--font-editorial);
+  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+  line-height: 1.2;
+}
+
+.cusec-school-filter__summary .cusec-school-filter__note {
+  color: var(--color-muted);
+  font-family: var(--font-ui);
+  font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.cusec-school-filter__tabs {
+  display: flex;
+  gap: 0.55rem;
+  min-width: 0;
+  overflow-x: auto;
+  padding-block: 0.15rem;
+  mask-image: linear-gradient(to right, black calc(100% - 1.5rem), transparent);
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - 1.5rem), transparent);
+  scrollbar-width: thin;
+}
+
+.cusec-school-filter__tab {
+  display: inline-flex;
+  min-height: 2.75rem;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid rgba(34, 34, 34, 0.16);
+  border-radius: 3px;
+  padding: 0.62rem 0.82rem;
+  background: rgba(255, 255, 255, 0.22);
+  color: var(--color-body);
+  cursor: pointer;
+  font: inherit;
+}
+
+.cusec-school-filter__tab:hover {
+  background: rgba(34, 34, 34, 0.04);
+}
+
+.cusec-school-filter__tab--active:hover {
+  background: var(--color-ink);
+}
+
+.cusec-school-filter__tab:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.cusec-school-filter__tab--active {
+  border-color: rgba(34, 34, 34, 0.78);
+  background: var(--color-ink);
+  color: var(--color-page);
+}
+
+.cusec-school-filter__tab span {
+  font-family: var(--font-ui);
+  font-size: clamp(0.98rem, 1.25vw, 1.12rem);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.cusec-schools-list {
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  margin-top: 0;
+  gap: clamp(1.4rem, 3vw, 2.5rem) clamp(1rem, 2.4vw, 1.75rem);
+}
+
+.cusec-school-archive-item__brand {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cusec-school-archive-item .cusec-archive-item__header {
+  align-items: flex-start;
+}
+
+.cusec-school-archive-item--mosaic {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 0.75rem;
+}
+
+.cusec-school-archive-item--mosaic .cusec-archive-item__header {
+  min-height: clamp(4rem, 6vw, 5rem);
+  border-bottom-color: rgba(34, 34, 34, 0.16);
+}
+
+.cusec-school-archive-item--mosaic .cusec-school-archive-item__brand {
+  gap: 0.75rem;
+}
+
+.cusec-school-archive-item--mosaic .cusec-logo-tile--compact-left {
+  max-width: min(100%, 9rem);
+  height: clamp(2.35rem, 3.8vw, 3.1rem);
+}
+
+.cusec-school-archive-item--mosaic .cusec-archive-item__brand h3 {
+  font-size: clamp(1.15rem, 1.75vw, 1.45rem);
+}
+
+.cusec-school-archive-item--mosaic .cusec-archive-item__content {
+  gap: 0.6rem;
+}
+
+.cusec-school-archive-item--mosaic .cusec-archive-item__content p {
+  font-size: clamp(0.98rem, 1.18vw, 1.08rem);
+  line-height: 1.24;
+}
+
 /* --- Footer --- */
 
 .cusec-footer {
@@ -1101,6 +1248,20 @@ a {
   }
 
   .cusec-historic-sponsors-list {
+    grid-template-columns: 1fr;
+  }
+
+  .cusec-school-filter {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .cusec-school-filter__tabs {
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+  }
+
+  .cusec-schools-list {
     grid-template-columns: 1fr;
   }
 }
