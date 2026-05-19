@@ -1265,3 +1265,25 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+.cusec-speakers-list--full-width {
+  grid-template-columns: 1fr;
+}
+
+.cusec-speakers-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(1.4rem, 3vw, 2.5rem) clamp(1rem, 2.4vw, 1.75rem);
+  margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .cusec-speakers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .cusec-speakers-grid {
+    grid-template-columns: 1fr;
+  }
+}

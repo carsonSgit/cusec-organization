@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { ButtonLink } from "@/components/ButtonLink";
 import { SectionHeading } from "@/components/SectionHeading";
 import { featuredSpeakers, speakersData } from "@/lib/speakersData";
 
 export function SpeakersSection() {
-  const [showAll, setShowAll] = useState(false);
-  const displayedSpeakers = showAll ? speakersData : featuredSpeakers;
+  const displayedSpeakers = featuredSpeakers;
 
   return (
     <section className="cusec-section cusec-speakers-section" id="speakers">
@@ -40,23 +39,7 @@ export function SpeakersSection() {
 
         {speakersData.length > 8 && (
           <div className="cusec-archive-actions">
-            {!showAll ? (
-              <button
-                type="button"
-                onClick={() => setShowAll(true)}
-                className="cusec-archive-more-btn"
-              >
-                See All Speakers
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => setShowAll(false)}
-                className="cusec-archive-more-btn"
-              >
-                See Less
-              </button>
-            )}
+            <ButtonLink href="/past-speakers">See All Past Speakers</ButtonLink>
           </div>
         )}
       </div>
