@@ -28,6 +28,7 @@ export function SchoolsSection() {
                   <LogoTile
                     key={`${region.name}-${school.name}`}
                     name={school.name}
+                    url={school.url}
                     logo={school.logo}
                   />
                 ))}

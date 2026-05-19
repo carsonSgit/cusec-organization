@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import type { Speaker } from "@/lib/speakersData";
 
 type SpeakerFocus = {
@@ -68,11 +69,14 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
     <article className="cusec-archive-item cusec-historic-sponsor cusec-historic-sponsor--mosaic">
       <div className="cusec-archive-item__header">
         <div className="cusec-archive-item__brand cusec-historic-sponsor__brand">
-          <img
-            src={speaker.imagePath}
+          <Image
+            src={speaker.image}
             alt={`${speaker.name} placeholder`}
+            sizes="240px"
+            quality={95}
             style={{
               width: "100%",
+              height: "auto",
               aspectRatio: "1/1",
               objectFit: "cover",
               backgroundColor: "rgba(34, 34, 34, 0.1)",

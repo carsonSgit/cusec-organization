@@ -16,7 +16,16 @@ function SchoolCard({ school }: { school: School }) {
           {school.logo ? (
             <LogoTile name={school.name} logo={school.logo} variant="compact-left" />
           ) : null}
-          <h3>{school.name}</h3>
+          <h3>
+            <a
+              href={school.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: "none" }}
+            >
+              {school.name}
+            </a>
+          </h3>
         </div>
       </div>
 
