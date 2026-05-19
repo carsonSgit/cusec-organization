@@ -27,7 +27,7 @@ export function SpeakersSection() {
               <div className="cusec-speaker-item__content">
                 <h3>{speaker.name}</h3>
                 <p>{speaker.description}</p>
-                <a href={speaker.url} className="cusec-archive-link" target="_blank">
+                <a href={speaker.url} className="cusec-archive-link" target="_blank" rel="noopener">
                   Learn More{" "}
                   <span aria-hidden="true" className="cusec-button-link__arrow">
                     -&gt;
