@@ -468,8 +468,107 @@ a {
   gap: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3rem);
 }
 
+.cusec-historic-sponsors-browser {
+  display: grid;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.cusec-sponsor-filter {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.74fr) minmax(0, 1.6fr);
+  gap: clamp(1.1rem, 3vw, 2rem);
+  align-items: end;
+}
+
+.cusec-sponsor-filter__summary {
+  display: grid;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.cusec-sponsor-filter__summary strong {
+  color: var(--color-ink);
+  font-family: var(--font-ui);
+  font-size: clamp(1.65rem, 3vw, 2.55rem);
+  font-weight: 400;
+  letter-spacing: -0.07em;
+  line-height: 0.95;
+}
+
+.cusec-sponsor-filter__summary p {
+  max-width: 45ch;
+  margin: 0;
+  color: var(--color-body);
+  font-family: var(--font-editorial);
+  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+  line-height: 1.2;
+}
+
+.cusec-sponsor-filter__summary .cusec-sponsor-filter__note {
+  color: var(--color-muted);
+  font-family: var(--font-ui);
+  font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.cusec-sponsor-filter__tabs {
+  display: flex;
+  gap: 0.55rem;
+  min-width: 0;
+  overflow-x: auto;
+  padding-block: 0.15rem;
+  mask-image: linear-gradient(to right, black calc(100% - 1.5rem), transparent);
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - 1.5rem), transparent);
+  scrollbar-width: thin;
+}
+
+.cusec-sponsor-filter__tab {
+  display: inline-flex;
+  min-height: 2.75rem;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1px solid rgba(34, 34, 34, 0.16);
+  border-radius: 3px;
+  padding: 0.62rem 0.82rem;
+  background: rgba(255, 255, 255, 0.22);
+  color: var(--color-body);
+  cursor: pointer;
+  font: inherit;
+}
+
+.cusec-sponsor-filter__tab:hover {
+  background: rgba(34, 34, 34, 0.04);
+}
+
+.cusec-sponsor-filter__tab--active:hover {
+  background: var(--color-ink);
+}
+
+.cusec-sponsor-filter__tab:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+.cusec-sponsor-filter__tab--active {
+  border-color: rgba(34, 34, 34, 0.78);
+  background: var(--color-ink);
+  color: var(--color-page);
+}
+
+.cusec-sponsor-filter__tab span {
+  font-family: var(--font-ui);
+  font-size: clamp(0.98rem, 1.25vw, 1.12rem);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
 .cusec-historic-sponsors-list {
-  margin-top: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  margin-top: 0;
+  gap: clamp(1.4rem, 3vw, 2.5rem) clamp(1rem, 2.4vw, 1.75rem);
 }
 
 .cusec-archive-item {
@@ -518,6 +617,59 @@ a {
 .cusec-historic-sponsor__brand {
   flex-direction: column;
   align-items: flex-start;
+}
+
+.cusec-historic-sponsor .cusec-archive-item__header {
+  align-items: flex-start;
+}
+
+.cusec-historic-sponsor--mosaic {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 0.75rem;
+}
+
+.cusec-historic-sponsor--mosaic .cusec-archive-item__header {
+  min-height: clamp(4rem, 6vw, 5rem);
+  border-bottom-color: rgba(34, 34, 34, 0.16);
+}
+
+.cusec-historic-sponsor--mosaic .cusec-historic-sponsor__brand {
+  gap: 0.75rem;
+}
+
+.cusec-historic-sponsor__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cusec-historic-sponsor__link:hover h3 {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+
+.cusec-historic-sponsor__link:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+.cusec-historic-sponsor--mosaic .cusec-logo-tile--compact-left {
+  max-width: min(100%, 9rem);
+  height: clamp(2.35rem, 3.8vw, 3.1rem);
+}
+
+.cusec-historic-sponsor--mosaic .cusec-archive-item__brand h3 {
+  font-size: clamp(1.15rem, 1.75vw, 1.45rem);
+}
+
+.cusec-historic-sponsor--mosaic .cusec-archive-item__content {
+  gap: 0.6rem;
+}
+
+.cusec-historic-sponsor--mosaic .cusec-archive-item__content p {
+  font-size: clamp(0.98rem, 1.18vw, 1.08rem);
+  line-height: 1.24;
 }
 
 .cusec-logo-tile--compact-left {
@@ -936,5 +1088,19 @@ a {
 
   .cusec-testimonial {
     min-height: auto;
+  }
+
+  .cusec-sponsor-filter {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .cusec-sponsor-filter__tabs {
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+  }
+
+  .cusec-historic-sponsors-list {
+    grid-template-columns: 1fr;
   }
 }

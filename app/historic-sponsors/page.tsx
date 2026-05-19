@@ -1,5 +1,5 @@
 import { Footer } from "@/components/Footer";
-import { LogoTile } from "@/components/LogoTile";
+import { HistoricSponsorsBrowser } from "@/components/HistoricSponsorsBrowser";
 import { PageShell } from "@/components/PageShell";
 import { SectionHeading } from "@/components/SectionHeading";
 import { sponsorsData } from "@/lib/sponsorsData";
@@ -20,27 +20,7 @@ export default function HistoricSponsorsPage() {
               align="left"
             />
 
-            <div className="cusec-archive-list cusec-historic-sponsors-list">
-              {sponsorsData.map((sponsor) => (
-                <article key={sponsor.name} className="cusec-archive-item">
-                  <div className="cusec-archive-item__header">
-                    <div className="cusec-archive-item__brand cusec-historic-sponsor__brand">
-                      <LogoTile
-                        name={sponsor.name}
-                        logo={sponsor.logo}
-                        variant="compact-left"
-                      />
-
-                      <h3>{sponsor.name}</h3>
-                    </div>
-                  </div>
-
-                  <div className="cusec-archive-item__content">
-                    <p>{sponsor.info}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
+            <HistoricSponsorsBrowser sponsors={sponsorsData} />
           </div>
         </section>
       </PageShell>
