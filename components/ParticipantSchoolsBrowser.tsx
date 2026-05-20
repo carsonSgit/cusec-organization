@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { LogoTile } from "@/components/LogoTile";
+import { ParticipantSchoolsSummary } from "@/components/ParticipantSchoolsSummary";
 import type { Region, School } from "@/lib/schoolsData";
 
 type ParticipantSchoolsBrowserProps = {
@@ -33,13 +34,14 @@ function SchoolCard({ school }: { school: School }) {
 }
 
 export function ParticipantSchoolsBrowser({ regions }: ParticipantSchoolsBrowserProps) {
-  const allSchools = regions.flatMap((region) => region.schools);
-
+  const allSchools = regions
+    .flatMap((region) => region.schools)
+    .toSorted((firstSchool, secondSchool) => firstSchool.name.localeCompare(secondSchool.name));
   const focuses = [
     {
-      id: "all",
-      label: "All Regions",
-      description: "Institutions represented by CUSEC attendees over the years.",
+      id: "summary",
+      label: "Summary",
+      description: "",
       schools: allSchools,
     },
     ...regions.map((region) => ({
@@ -54,18 +56,23 @@ export function ParticipantSchoolsBrowser({ regions }: ParticipantSchoolsBrowser
   const activeFocus = focuses.find((focus) => focus.id === activeFocusId) ?? focuses[0];
 
   const panelId = "school-focus-panel";
+  const isSummary = activeFocus.id === "summary";
 
   return (
     <div className="cusec-schools-browser">
       <div className="cusec-school-filter">
-        <div className="cusec-school-filter__summary" aria-live="polite">
-          <strong>{activeFocus.label}</strong>
-          <p>{activeFocus.description}</p>
-          <p className="cusec-school-filter__note">
-            This historical list is not a current-year roster or formal school partnership
-            directory.
-          </p>
-        </div>
+        {!isSummary ? (
+          <div className="cusec-school-filter__summary" aria-live="polite">
+            <strong>{activeFocus.label}</strong>
+            <p>{activeFocus.description}</p>
+            <p className="cusec-school-filter__note">
+              This historical list is not a current-year roster or formal school partnership
+              directory.
+            </p>
+          </div>
+        ) : (
+          <div aria-hidden="true" />
+        )}
 
         <div className="cusec-school-filter__tabs">
           {focuses.map((focus) => {
@@ -90,14 +97,26 @@ export function ParticipantSchoolsBrowser({ regions }: ParticipantSchoolsBrowser
       </div>
 
       <section
-        className="cusec-archive-list cusec-schools-list"
         id={panelId}
-        aria-label={`${activeFocus.label} schools`}
-        style={{ marginTop: "3rem" }}
+        aria-label={isSummary ? "Historic summary" : `${activeFocus.label} schools`}
       >
-        {activeFocus.schools.map((school, idx) => (
-          <SchoolCard key={`${school.name}-${idx}`} school={school} />
-        ))}
+        {isSummary ? (
+          <div className="cusec-summary-with-schools">
+            <ParticipantSchoolsSummary />
+
+            <div className="cusec-archive-list cusec-schools-list">
+              {activeFocus.schools.map((school, idx) => (
+                <SchoolCard key={`${school.name}-${idx}`} school={school} />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="cusec-archive-list cusec-schools-list">
+            {activeFocus.schools.map((school, idx) => (
+              <SchoolCard key={`${school.name}-${idx}`} school={school} />
+            ))}
+          </div>
+        )}
       </section>
     </div>
   );
