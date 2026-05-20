@@ -16,7 +16,7 @@ export default function ParticipantSchoolsPage() {
                   Participating <em>Schools</em>
                 </>
               }
-              lede="Discover the vast network of universities and colleges that have joined CUSEC over the years."
+              lede="Browse universities and colleges represented by CUSEC attendees over the years."
               align="left"
             />
 

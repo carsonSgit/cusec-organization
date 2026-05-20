@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { LogoTile } from "@/components/LogoTile";
+import { ParticipantSchoolsSummary } from "@/components/ParticipantSchoolsSummary";
 import type { Region, School } from "@/lib/schoolsData";
 
 type ParticipantSchoolsBrowserProps = {
@@ -28,28 +29,25 @@ function SchoolCard({ school }: { school: School }) {
           </h3>
         </div>
       </div>
-
-      <div className="cusec-archive-item__content">
-        <p>{school.info}</p>
-      </div>
     </article>
   );
 }
 
 export function ParticipantSchoolsBrowser({ regions }: ParticipantSchoolsBrowserProps) {
-  const allSchools = regions.flatMap((region) => region.schools);
-
+  const allSchools = regions
+    .flatMap((region) => region.schools)
+    .toSorted((firstSchool, secondSchool) => firstSchool.name.localeCompare(secondSchool.name));
   const focuses = [
     {
-      id: "all",
-      label: "All Regions",
-      description: "Universities and colleges from across North America and beyond.",
+      id: "summary",
+      label: "Summary",
+      description: "",
       schools: allSchools,
     },
     ...regions.map((region) => ({
       id: region.name.toLowerCase().replace(/\s+/g, "-"),
       label: region.name,
-      description: `Participating universities and colleges from ${region.name}.`,
+      description: `Institutions from ${region.name} represented by CUSEC attendees over the years.`,
       schools: region.schools,
     })),
   ];
@@ -58,19 +56,25 @@ export function ParticipantSchoolsBrowser({ regions }: ParticipantSchoolsBrowser
   const activeFocus = focuses.find((focus) => focus.id === activeFocusId) ?? focuses[0];
 
   const panelId = "school-focus-panel";
+  const isSummary = activeFocus.id === "summary";
 
   return (
     <div className="cusec-schools-browser">
       <div className="cusec-school-filter">
-        <div className="cusec-school-filter__summary" aria-live="polite">
-          <strong>{activeFocus.label}</strong>
-          <p>{activeFocus.description}</p>
-          <p className="cusec-school-filter__note">
-            This archive represents a wide selection of institutions that have participated in CUSEC.
-          </p>
-        </div>
+        {!isSummary ? (
+          <div className="cusec-school-filter__summary" aria-live="polite">
+            <strong>{activeFocus.label}</strong>
+            <p>{activeFocus.description}</p>
+            <p className="cusec-school-filter__note">
+              This historical list is not a current-year roster or formal school partnership
+              directory.
+            </p>
+          </div>
+        ) : (
+          <div aria-hidden="true" />
+        )}
 
-        <div className="cusec-school-filter__tabs" role="tablist" aria-label="Region focus">
+        <div className="cusec-school-filter__tabs">
           {focuses.map((focus) => {
             const isActive = focus.id === activeFocus.id;
 
@@ -81,8 +85,7 @@ export function ParticipantSchoolsBrowser({ regions }: ParticipantSchoolsBrowser
                 className={`cusec-school-filter__tab${
                   isActive ? " cusec-school-filter__tab--active" : ""
                 }`}
-                role="tab"
-                aria-selected={isActive}
+                aria-pressed={isActive}
                 aria-controls={panelId}
                 onClick={() => setActiveFocusId(focus.id)}
               >
@@ -93,17 +96,28 @@ export function ParticipantSchoolsBrowser({ regions }: ParticipantSchoolsBrowser
         </div>
       </div>
 
-      <div
-        className="cusec-archive-list cusec-schools-list"
+      <section
         id={panelId}
-        role="tabpanel"
-        aria-label={`${activeFocus.label} schools`}
-        style={{ marginTop: "3rem" }}
+        aria-label={isSummary ? "Historic summary" : `${activeFocus.label} schools`}
       >
-        {activeFocus.schools.map((school, idx) => (
-          <SchoolCard key={`${school.name}-${idx}`} school={school} />
-        ))}
-      </div>
+        {isSummary ? (
+          <div className="cusec-summary-with-schools">
+            <ParticipantSchoolsSummary />
+
+            <div className="cusec-archive-list cusec-schools-list">
+              {activeFocus.schools.map((school, idx) => (
+                <SchoolCard key={`${school.name}-${idx}`} school={school} />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="cusec-archive-list cusec-schools-list">
+            {activeFocus.schools.map((school, idx) => (
+              <SchoolCard key={`${school.name}-${idx}`} school={school} />
+            ))}
+          </div>
+        )}
+      </section>
     </div>
   );
 }
