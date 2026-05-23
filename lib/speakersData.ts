@@ -1,6 +1,25 @@
 import type { StaticImageData } from "next/image";
 import { pickByKey } from "./pick";
 import placeholderSpeaker from "../assets/speaker-photos/placeholder-speaker.svg";
+import aaronPatterson from "../assets/speaker-photos/aaron-patterson.png";
+import alexKarp from "../assets/speaker-photos/alex-karp.png";
+import alexisOhanian from "../assets/speaker-photos/alexis-ohanian.png";
+import bretVictor from "../assets/speaker-photos/bret-victor.png";
+import bruceSchneier from "../assets/speaker-photos/bruce-schneier.png";
+import davidHeinemeierHansson from "../assets/speaker-photos/david-heinemeier-hansson.png";
+import douglasCrockford from "../assets/speaker-photos/douglas-crackford.png";
+import gradyBooch from "../assets/speaker-photos/grady-booch.png";
+import gregKroahHartman from "../assets/speaker-photos/greg-kroah-hartman.png";
+import jeffAtwood from "../assets/speaker-photos/jeff-atwood.png";
+import joelSpolsky from "../assets/speaker-photos/joel-spolsky.png";
+import joellePineau from "../assets/speaker-photos/joelle-pineau.png";
+import juliaEvans from "../assets/speaker-photos/julia-evans.png";
+import kathySierra from "../assets/speaker-photos/kathy-sierra.png";
+import kentBeck from "../assets/speaker-photos/kent-beck.png";
+import michaelSeibel from "../assets/speaker-photos/michael-seibel.png";
+import richardStallman from "../assets/speaker-photos/richard-stallman.png";
+import sandiMetz from "../assets/speaker-photos/sandi-metz.png";
+import yehudaKatz from "../assets/speaker-photos/yehuda-katz.png";
 
 export type Speaker = {
   name: string;
@@ -25,77 +44,77 @@ export const speakersData: Speaker[] = [
     "Kent Beck",
     "Software engineer and creator of Extreme Programming (XP), influential in Agile software development",
     "https://kentbeck.com/",
-    placeholderSpeaker,
+    kentBeck,
     2008,
   ),
   speaker(
     "Richard Stallman",
     "Founder of the GNU Project and Free Software Movement",
     "https://stallman.org/",
-    placeholderSpeaker,
+    richardStallman,
     2004,
   ),
   speaker(
     "Joel Spolsky",
     "Software developer, writer, and co-founder of Stack Overflow and Trello",
     "https://www.joelonsoftware.com/",
-    placeholderSpeaker,
+    joelSpolsky,
     2006,
   ),
   speaker(
     "Jeff Atwood",
     "Co-founder of Stack Overflow and programming blogger behind Coding Horror",
     "https://blog.codinghorror.com/",
-    placeholderSpeaker,
+    jeffAtwood,
     2007,
   ),
   speaker(
     "Alexis Ohanian",
     "Entrepreneur and co-founder of Reddit",
     "https://en.wikipedia.org/wiki/Alexis_Ohanian",
-    placeholderSpeaker,
+    alexisOhanian,
     2011,
   ),
   speaker(
     "David Heinemeier Hansson",
     "Creator of Ruby on Rails and co-owner/CTO of Basecamp",
     "https://dhh.dk/",
-    placeholderSpeaker,
+    davidHeinemeierHansson,
     2009,
   ),
   speaker(
     "Douglas Crockford",
     "Computer programmer best known for popularizing JSON",
     "https://www.crockford.com/",
-    placeholderSpeaker,
+    douglasCrockford,
     2010,
   ),
   speaker(
     "Bruce Schneier",
     "Cybersecurity expert, cryptographer, and security author",
     "https://www.schneier.com/",
-    placeholderSpeaker,
+    bruceSchneier,
     2012,
   ),
   speaker(
     "Bret Victor",
     "Interface designer and computer scientist known for interactive computing concepts",
     "http://worrydream.com/",
-    placeholderSpeaker,
+    bretVictor,
     2013,
   ),
   speaker(
     "Greg Kroah-Hartman",
     "Linux kernel developer and maintainer",
     "https://en.wikipedia.org/wiki/Greg_Kroah-Hartman",
-    placeholderSpeaker,
+    gregKroahHartman,
     2014,
   ),
   speaker(
     "Grady Booch",
     "Software engineer and co-creator of UML (Unified Modeling Language)",
     "https://en.wikipedia.org/wiki/Grady_Booch",
-    placeholderSpeaker,
+    gradyBooch,
     2005,
   ),
   speaker(
@@ -109,56 +128,56 @@ export const speakersData: Speaker[] = [
     "Michael Seibel",
     "Entrepreneur, former CEO of Twitch, and partner at Y Combinator",
     "https://www.michaelseibel.com/",
-    placeholderSpeaker,
+    michaelSeibel,
     2018,
   ),
   speaker(
     "Alex Karp",
     "Author of 'Running Start: How to get a job in tech, keep that job, and thrive'. Engineering manager at Thumbtack, ",
     "https://www.alexkarp.net/",
-    placeholderSpeaker,
+    alexKarp,
     2019,
   ),
   speaker(
     "Joelle Pineau",
     "AI researcher, professor at McGill University, and former Meta AI leader",
     "https://www.cs.mcgill.ca/~jpineau/",
-    placeholderSpeaker,
+    joellePineau,
     2020,
   ),
   speaker(
     "Yehuda Katz",
     "Open source developer known for Ember.js, Ruby on Rails, and Rust contributions",
     "https://yehudakatz.com/",
-    placeholderSpeaker,
+    yehudaKatz,
     2016,
   ),
   speaker(
     "Aaron Patterson",
     "Ruby core developer and major contributor to Ruby on Rails",
     "https://tenderlovemaking.com/",
-    placeholderSpeaker,
+    aaronPatterson,
     2017,
   ),
   speaker(
     "Julia Evans",
     "Software engineer and educator known for approachable programming zines and systems content",
     "https://jvns.ca/",
-    placeholderSpeaker,
+    juliaEvans,
     2021,
   ),
   speaker(
     "Kathy Sierra",
     "Programming educator and co-creator of the Head First book series",
     "https://en.wikipedia.org/wiki/Kathy_Sierra",
-    placeholderSpeaker,
+    kathySierra,
     2008,
   ),
   speaker(
     "Sandi Metz",
     "Software architect and author known for object-oriented design and Ruby expertise",
     "https://sandimetz.com/",
-    placeholderSpeaker,
+    sandiMetz,
     2022,
   ),
 ];
