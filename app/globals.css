@@ -1456,3 +1456,34 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+.cusec-speakers-grid .cusec-archive-item__header {
+  border-bottom: none;
+  padding-bottom: 0;
+  min-height: 0;
+}
+
+.cusec-speaker-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.cusec-speakers-grid .cusec-speaker-photo {
+  width: clamp(9rem, 18vw, 12rem);
+  height: clamp(9rem, 18vw, 12rem);
+}
+
+.cusec-speakers-grid .cusec-archive-item__brand {
+  align-items: flex-start;
+}
+
+.cusec-speakers-grid .cusec-archive-item__brand h3 {
+  letter-spacing: 0.015em;
+}
+
+.cusec-speakers-grid .cusec-archive-item__content p {
+  letter-spacing: 0.012em;
+}

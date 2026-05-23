@@ -20,6 +20,7 @@ import michaelSeibel from "../assets/speaker-photos/michael-seibel.png";
 import richardStallman from "../assets/speaker-photos/richard-stallman.png";
 import sandiMetz from "../assets/speaker-photos/sandi-metz.png";
 import yehudaKatz from "../assets/speaker-photos/yehuda-katz.png";
+import jeffUllman from "../assets/speaker-photos/jeff-ullman.png";
 
 export type Speaker = {
   name: string;
@@ -121,7 +122,7 @@ export const speakersData: Speaker[] = [
     "Jeff Ullman",
     "Stanford computer science professor known for databases and compiler theory",
     "https://profiles.stanford.edu/jeffrey-ullman",
-    placeholderSpeaker,
+    jeffUllman,
     2015,
   ),
   speaker(

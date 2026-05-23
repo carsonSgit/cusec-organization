@@ -74,19 +74,16 @@ function SpeakerCard({ speaker }: { speaker: Speaker }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Image
-            src={speaker.image}
-            alt={speaker.name}
-            sizes="240px"
-            quality={95}
-            style={{
-              width: "100%",
-              height: "auto",
-              aspectRatio: "1/1",
-              objectFit: "contain",
-              borderRadius: "4px",
-            }}
-          />
+          <div className="cusec-speaker-photo">
+            <Image
+              src={speaker.image}
+              alt={speaker.name}
+              fill
+              sizes="240px"
+              quality={95}
+              style={{ objectFit: "cover" }}
+            />
+          </div>
           <h3>{speaker.name}</h3>
         </a>
       </div>
