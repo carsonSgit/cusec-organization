@@ -12,8 +12,8 @@ export function EditorialSection({ section }: EditorialSectionProps) {
       <article className={`cusec-editorial cusec-editorial--image-${section.imageSide}`}>
         <div className="cusec-editorial__copy">
           <h2>{section.heading}</h2>
-          {section.body.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
+          {section.body.map((paragraph) => (
+            <p key={paragraph.id}>{paragraph.content}</p>
           ))}
         </div>
         <div className="cusec-editorial__media">

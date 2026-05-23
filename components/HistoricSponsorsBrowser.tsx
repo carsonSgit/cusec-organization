@@ -333,7 +333,7 @@ function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
           className="cusec-archive-item__brand cusec-historic-sponsor__brand cusec-historic-sponsor__link"
           href={sponsorLink}
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           <LogoTile name={sponsor.name} logo={sponsor.logo} variant="compact-left" />
 
