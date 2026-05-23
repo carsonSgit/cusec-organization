@@ -175,8 +175,6 @@ export const featuredRegions: Region[] = [
       "University of Toronto",
       "McMaster University",
       "Queen's University",
-      "Western University",
-      "University of Ottawa",
     ]),
   },
   {
@@ -186,8 +184,6 @@ export const featuredRegions: Region[] = [
       "Concordia University",
       "Université de Montréal",
       "Polytechnique Montréal",
-      "École de technologie supérieure (ÉTS)",
-      "Université du Québec à Montréal",
     ]),
   },
   {

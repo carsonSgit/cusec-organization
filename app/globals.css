@@ -1446,19 +1446,44 @@ a {
 }
 
 .cusec-speakers-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: clamp(1.4rem, 3vw, 2.5rem) clamp(1rem, 2.4vw, 1.75rem);
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   margin-top: 0;
+  gap: clamp(1.4rem, 3vw, 2.5rem) clamp(1rem, 2.4vw, 1.75rem);
 }
 
-@media (max-width: 900px) {
-  .cusec-speakers-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 @media (max-width: 600px) {
   .cusec-speakers-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.cusec-speakers-grid .cusec-archive-item__header {
+  border-bottom: none;
+  padding-bottom: 0;
+  min-height: 0;
+}
+
+.cusec-speaker-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.cusec-speakers-grid .cusec-speaker-photo {
+  width: clamp(9rem, 18vw, 12rem);
+  height: clamp(9rem, 18vw, 12rem);
+}
+
+.cusec-speakers-grid .cusec-archive-item__brand {
+  align-items: flex-start;
+}
+
+.cusec-speakers-grid .cusec-archive-item__brand h3 {
+  letter-spacing: 0.015em;
+}
+
+.cusec-speakers-grid .cusec-archive-item__content p {
+  letter-spacing: 0.012em;
 }

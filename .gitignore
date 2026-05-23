@@ -3,3 +3,4 @@
 .omx
 node_modules/
 .next
+.claude/
