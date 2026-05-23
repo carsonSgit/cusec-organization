@@ -21,13 +21,18 @@ export function SpeakersSection() {
         />
 
         <div className="cusec-speakers-list">
-          {displayedSpeakers.map((speaker, idx) => (
-            <article key={idx} className="cusec-speaker-item">
+          {displayedSpeakers.map((speaker) => (
+            <article key={speaker.name} className="cusec-speaker-item">
               <div className="cusec-speaker-item__content">
                 <h3>{speaker.name}</h3>
                 <p>{speaker.description}</p>
-                <a href={speaker.url} className="cusec-archive-link" target="_blank" rel="noopener">
-                  Learn More{" "}
+                <a
+                  href={speaker.url}
+                  className="cusec-archive-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Learn More<span className="cusec-sr-only"> about {speaker.name}</span>{" "}
                   <span aria-hidden="true" className="cusec-button-link__arrow">
                     -&gt;
                   </span>

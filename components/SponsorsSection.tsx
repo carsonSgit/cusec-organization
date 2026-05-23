@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import { ButtonLink } from "@/components/ButtonLink";
 import { SectionHeading } from "@/components/SectionHeading";
 import { sponsorMarqueeRows, type Sponsor } from "@/lib/sponsorsData";
@@ -49,10 +49,7 @@ function MarqueeRow({ direction, onLogoSettled, rowId, sponsors }: MarqueeRowPro
 
 export function SponsorsSection() {
   const [settledLogoKeys, setSettledLogoKeys] = useState<Set<string>>(() => new Set());
-  const totalLogoCount = useMemo(
-    () => (sponsorMarqueeRows.top.length + sponsorMarqueeRows.bottom.length) * 2,
-    [],
-  );
+  const totalLogoCount = (sponsorMarqueeRows.top.length + sponsorMarqueeRows.bottom.length) * 2;
   const isMarqueeReady = settledLogoKeys.size >= totalLogoCount;
 
   const handleLogoSettled = useCallback((key: string) => {

@@ -1,6 +1,5 @@
 import type { StaticImageData } from "next/image";
 import { pickByKey } from "./pick";
-import placeholderSpeaker from "../assets/speaker-photos/placeholder-speaker.svg";
 import aaronPatterson from "../assets/speaker-photos/aaron-patterson.png";
 import alexKarp from "../assets/speaker-photos/alex-karp.png";
 import alexisOhanian from "../assets/speaker-photos/alexis-ohanian.png";

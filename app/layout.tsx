@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { EB_Garamond, Karla } from "next/font/google";
+import { Navbar } from "@/components/Navbar";
 import "./globals.css";
 
 const karla = Karla({
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body>
         <div className="cusec-paper-surface">
           <div className="cusec-paper-overlay" />
+          <Navbar />
           {children}
         </div>
       </body>
