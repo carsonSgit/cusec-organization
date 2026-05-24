@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { ButtonLink } from "@/components/ButtonLink";
 import { LogoTile } from "@/components/LogoTile";
 import { SectionHeading } from "@/components/SectionHeading";
@@ -26,16 +27,14 @@ function SchoolCard({ school }: { school: School }) {
 }
 
 export function SchoolsSection() {
+  const t = useTranslations("Schools");
+
   return (
     <section className="cusec-section cusec-schools-section" id="schools">
       <div className="cusec-section__inner">
         <SectionHeading
-          title={
-            <>
-              From Across <em>the Country</em>
-            </>
-          }
-          lede="We've welcomed students from a wide range of universities and colleges."
+          title={t.rich("heading", { em: (chunks) => <em>{chunks}</em> })}
+          lede={t("lede")}
           align="center"
         />
 
@@ -53,7 +52,7 @@ export function SchoolsSection() {
         </div>
 
         <div className="cusec-sponsors-actions">
-          <ButtonLink href="/participant-schools">See All Participant Schools</ButtonLink>
+          <ButtonLink href="/participant-schools">{t("seeAll")}</ButtonLink>
         </div>
       </div>
     </section>

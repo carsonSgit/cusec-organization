@@ -1,36 +1,32 @@
 export type HistoricSummaryMetric = {
-  label: string;
+  key: string;
   value: number;
-  detail?: string;
 };
 
 export type HistoricSummaryDataset = {
-  title: string;
-  lede: string;
-  footnote?: string;
+  id: "studyMix" | "degreeMix";
+  hasFootnote?: boolean;
   metrics: HistoricSummaryMetric[];
 };
 
 export const historicStudyMix: HistoricSummaryDataset = {
-  title: "What fields do our attendees study?",
-  lede: "",
-  footnote: "Programs may be multi-tagged when students listed combined studies.",
+  id: "studyMix",
+  hasFootnote: true,
   metrics: [
-    { label: "Computer science", value: 50 },
-    { label: "Software engineering", value: 31.3 },
-    { label: "Computer engineering", value: 9.4 },
-    { label: "Math, statistics, data", value: 5 },
-    { label: "Other", value: 6.6 },
-    { label: "Electrical engineering", value: 2.9 },
+    { key: "computerScience", value: 50 },
+    { key: "softwareEngineering", value: 31.3 },
+    { key: "computerEngineering", value: 9.4 },
+    { key: "mathStatsData", value: 5 },
+    { key: "other", value: 6.6 },
+    { key: "electricalEngineering", value: 2.9 },
   ],
 };
 
 export const historicDegreeMix: HistoricSummaryDataset = {
-  title: "What degree stage are attendees in?",
-  lede: "",
+  id: "degreeMix",
   metrics: [
-    { label: "Bachelor's", value: 93.2 },
-    { label: "Master's", value: 2.3 },
-    { label: "Other", value: 4.5 },
+    { key: "bachelors", value: 93.2 },
+    { key: "masters", value: 2.3 },
+    { key: "other", value: 4.5 },
   ],
 };

@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import type { Testimonial } from "@/lib/content";
 
 type TestimonialQuoteProps = {
@@ -5,12 +6,14 @@ type TestimonialQuoteProps = {
 };
 
 export function TestimonialQuote({ testimonial }: TestimonialQuoteProps) {
+  const t = useTranslations("Testimonials");
+
   return (
     <figure className="cusec-testimonial">
       <blockquote>
-        <p>{testimonial.quote}</p>
+        <p>{t.rich(testimonial.id, { b: (chunks) => <strong>{chunks}</strong> })}</p>
       </blockquote>
-      <figcaption>{testimonial.attribution}</figcaption>
+      <figcaption>{t(`attributions.${testimonial.id}`)}</figcaption>
     </figure>
   );
 }

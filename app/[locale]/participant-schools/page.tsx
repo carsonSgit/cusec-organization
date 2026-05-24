@@ -1,22 +1,27 @@
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Footer } from "@/components/Footer";
 import { PageShell } from "@/components/PageShell";
-import { SectionHeading } from "@/components/SectionHeading";
 import { ParticipantSchoolsBrowser } from "@/components/ParticipantSchoolsBrowser";
+import { SectionHeading } from "@/components/SectionHeading";
 import { regionsData } from "@/lib/schoolsData";
 
-export default function ParticipantSchoolsPage() {
+export default async function ParticipantSchoolsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations("Pages.participantSchools");
+
   return (
     <>
       <PageShell>
         <section className="cusec-section cusec-archive-section">
           <div className="cusec-section__inner">
             <SectionHeading
-              title={
-                <>
-                  Participating <em>Schools</em>
-                </>
-              }
-              lede="Browse universities and colleges represented by CUSEC attendees over the years."
+              title={t.rich("heading", { em: (chunks) => <em>{chunks}</em> })}
+              lede={t("lede")}
               align="left"
             />
 

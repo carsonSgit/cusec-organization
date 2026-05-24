@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useCallback, useState } from "react";
 import { ButtonLink } from "@/components/ButtonLink";
@@ -16,6 +17,7 @@ type MarqueeRowProps = {
 };
 
 function MarqueeRow({ direction, onLogoSettled, rowId, sponsors }: MarqueeRowProps) {
+  const t = useTranslations("Sponsors");
   const repeatedSponsors = [...sponsors, ...sponsors];
 
   return (
@@ -27,7 +29,7 @@ function MarqueeRow({ direction, onLogoSettled, rowId, sponsors }: MarqueeRowPro
           <div key={logoKey} className="cusec-school-item cusec-marquee-logo" title={sponsor.name}>
             <Image
               src={sponsor.logo}
-              alt={`${sponsor.name} Logo`}
+              alt={t("logoAlt", { name: sponsor.name })}
               quality={95}
               sizes="160px"
               loading="eager"
@@ -48,6 +50,7 @@ function MarqueeRow({ direction, onLogoSettled, rowId, sponsors }: MarqueeRowPro
 }
 
 export function SponsorsSection() {
+  const t = useTranslations("Sponsors");
   const [settledLogoKeys, setSettledLogoKeys] = useState<Set<string>>(() => new Set());
   const totalLogoCount = (sponsorMarqueeRows.top.length + sponsorMarqueeRows.bottom.length) * 2;
   const isMarqueeReady = settledLogoKeys.size >= totalLogoCount;
@@ -68,12 +71,8 @@ export function SponsorsSection() {
     <section className="cusec-section cusec-sponsors-section" id="sponsors">
       <div className="cusec-section__inner">
         <SectionHeading
-          title={
-            <>
-              Supported by the <em>Best</em>
-            </>
-          }
-          lede="CUSEC wouldn't be possible without our amazing sponsors who have supported us over the years."
+          title={t.rich("heading", { em: (chunks) => <em>{chunks}</em> })}
+          lede={t("lede")}
           align="center"
         />
 
@@ -99,7 +98,7 @@ export function SponsorsSection() {
         </div>
 
         <div className="cusec-sponsors-actions">
-          <ButtonLink href="/historic-sponsors">See All Historic Sponsors</ButtonLink>
+          <ButtonLink href="/historic-sponsors">{t("seeAll")}</ButtonLink>
         </div>
       </div>
     </section>

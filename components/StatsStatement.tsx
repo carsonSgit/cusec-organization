@@ -1,11 +1,13 @@
+import { useTranslations } from "next-intl";
 import { Section } from "./Section";
 
 export function StatsStatement() {
+  const t = useTranslations("Stats");
+
   return (
     <Section className="cusec-stats-section">
       <p className="cusec-stats">
-        For <strong>25+</strong> years we've welcomed <strong>10,000+</strong> attendees,{" "}
-        <strong>270+</strong> sponsors and <strong>380+</strong> speakers
+        {t.rich("statement", { b: (chunks) => <strong>{chunks}</strong> })}
       </p>
     </Section>
   );

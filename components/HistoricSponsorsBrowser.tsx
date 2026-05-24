@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { z } from "zod";
 import { LogoTile } from "@/components/LogoTile";
@@ -7,8 +8,6 @@ import type { Sponsor } from "@/lib/sponsorsData";
 
 type SponsorFocus = {
   id: string;
-  label: string;
-  description: string;
   names: string[];
 };
 
@@ -18,8 +17,6 @@ type HistoricSponsorsBrowserProps = {
 
 const sponsorFocusSchema = z.object({
   id: z.string().min(1),
-  label: z.string().min(1),
-  description: z.string().min(1),
   names: z.array(z.string().min(1)),
 });
 
@@ -149,14 +146,10 @@ const sponsorLinks = sponsorLinksSchema.parse({
 const sponsorFocuses = sponsorFocusesSchema.parse([
   {
     id: "all",
-    label: "All",
-    description: "Every sponsor in the CUSEC archive.",
     names: [],
   },
   {
     id: "platforms-infra",
-    label: "Platforms & Infra",
-    description: "Major tech platforms, cloud providers, networking, telecom, and core systems.",
     names: [
       "Google",
       "Microsoft",
@@ -182,8 +175,6 @@ const sponsorFocuses = sponsorFocusesSchema.parse([
   },
   {
     id: "software-products",
-    label: "Software Products",
-    description: "SaaS, enterprise software, developer tools, data products, and vertical apps.",
     names: [
       "Shopify",
       "ServiceNow",
@@ -207,9 +198,6 @@ const sponsorFocuses = sponsorFocusesSchema.parse([
   },
   {
     id: "finance-commerce",
-    label: "Finance & Commerce",
-    description:
-      "Financial services, payments, retail platforms, marketplaces, and consumer commerce.",
     names: [
       "RBC",
       "TD",
@@ -233,9 +221,6 @@ const sponsorFocuses = sponsorFocusesSchema.parse([
   },
   {
     id: "games-creative",
-    label: "Games & Creative",
-    description:
-      "Game studios, creative tooling, interactive media, fashion, and digital experiences.",
     names: [
       "EA",
       "Riot Games",
@@ -252,9 +237,6 @@ const sponsorFocuses = sponsorFocusesSchema.parse([
   },
   {
     id: "services-public-systems",
-    label: "Services & Systems",
-    description:
-      "Consulting, agencies, education, public-interest tech, industrial systems, and deep tech.",
     names: [
       "Deloitte",
       "Accenture",
@@ -324,6 +306,7 @@ function getSponsorsForFocus(sponsors: Sponsor[], focus: SponsorFocus) {
 }
 
 function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
+  const t = useTranslations("SponsorsBrowser");
   const sponsorLink = getSponsorLink(sponsor.name);
 
   return (
@@ -342,7 +325,7 @@ function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
       </div>
 
       <div className="cusec-archive-item__content">
-        <p>{sponsor.info}</p>
+        <p>{t(`descriptions.${sponsor.name}`)}</p>
       </div>
     </article>
   );
@@ -351,6 +334,7 @@ function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
 export function HistoricSponsorsBrowser({ sponsors }: HistoricSponsorsBrowserProps) {
   assertSponsorBrowserData(sponsors);
 
+  const t = useTranslations("SponsorsBrowser");
   const [activeFocusId, setActiveFocusId] = useState(sponsorFocuses[0].id);
   const activeFocus =
     sponsorFocuses.find((focus) => focus.id === activeFocusId) ?? sponsorFocuses[0];
@@ -362,14 +346,16 @@ export function HistoricSponsorsBrowser({ sponsors }: HistoricSponsorsBrowserPro
     <div className="cusec-historic-sponsors-browser">
       <div className="cusec-sponsor-filter">
         <div className="cusec-sponsor-filter__summary" aria-live="polite">
-          <strong>{activeFocus.label}</strong>
-          <p>{activeFocus.description}</p>
-          <p className="cusec-sponsor-filter__note">
-            This archive is not a comprehensive list of every CUSEC sponsor.
-          </p>
+          <strong>{t(`focus.${activeFocus.id}.label`)}</strong>
+          <p>{t(`focus.${activeFocus.id}.description`)}</p>
+          <p className="cusec-sponsor-filter__note">{t("note")}</p>
         </div>
 
-        <div className="cusec-sponsor-filter__tabs" role="tablist" aria-label="Industry focus">
+        <div
+          className="cusec-sponsor-filter__tabs"
+          role="tablist"
+          aria-label={t("ariaIndustry")}
+        >
           {sponsorFocuses.map((focus) => {
             const isActive = focus.id === activeFocus.id;
 
@@ -385,7 +371,7 @@ export function HistoricSponsorsBrowser({ sponsors }: HistoricSponsorsBrowserPro
                 aria-controls={panelId}
                 onClick={() => setActiveFocusId(focus.id)}
               >
-                <span>{focus.label}</span>
+                <span>{t(`focus.${focus.id}.label`)}</span>
               </button>
             );
           })}
@@ -396,7 +382,7 @@ export function HistoricSponsorsBrowser({ sponsors }: HistoricSponsorsBrowserPro
         className="cusec-archive-list cusec-historic-sponsors-list"
         id={panelId}
         role="tabpanel"
-        aria-label={`${activeFocus.label} sponsors`}
+        aria-label={t(`focus.${activeFocus.id}.label`)}
       >
         {displayedSponsors.map((sponsor) => (
           <SponsorCard key={sponsor.name} sponsor={sponsor} />

@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { LogoTile } from "@/components/LogoTile";
 import { ParticipantSchoolsSummary } from "@/components/ParticipantSchoolsSummary";
@@ -34,20 +35,21 @@ function SchoolCard({ school }: { school: School }) {
 }
 
 export function ParticipantSchoolsBrowser({ regions }: ParticipantSchoolsBrowserProps) {
+  const t = useTranslations("SchoolsBrowser");
   const allSchools = regions
     .flatMap((region) => region.schools)
     .toSorted((firstSchool, secondSchool) => firstSchool.name.localeCompare(secondSchool.name));
   const focuses = [
     {
       id: "summary",
-      label: "Summary",
+      label: t("summary"),
       description: "",
       schools: allSchools,
     },
     ...regions.map((region) => ({
       id: region.name.toLowerCase().replace(/\s+/g, "-"),
       label: region.name,
-      description: `Institutions from ${region.name} represented by CUSEC attendees over the years.`,
+      description: t("regionDescription", { region: region.name }),
       schools: region.schools,
     })),
   ];
@@ -65,10 +67,7 @@ export function ParticipantSchoolsBrowser({ regions }: ParticipantSchoolsBrowser
           <div className="cusec-school-filter__summary" aria-live="polite">
             <strong>{activeFocus.label}</strong>
             <p>{activeFocus.description}</p>
-            <p className="cusec-school-filter__note">
-              This historical list is not a current-year roster or formal school partnership
-              directory.
-            </p>
+            <p className="cusec-school-filter__note">{t("note")}</p>
           </div>
         ) : (
           <div aria-hidden="true" />
@@ -98,7 +97,7 @@ export function ParticipantSchoolsBrowser({ regions }: ParticipantSchoolsBrowser
 
       <section
         id={panelId}
-        aria-label={isSummary ? "Historic summary" : `${activeFocus.label} schools`}
+        aria-label={isSummary ? t("summaryAria") : t("regionAria", { region: activeFocus.label })}
       >
         {isSummary ? (
           <div className="cusec-summary-with-schools">

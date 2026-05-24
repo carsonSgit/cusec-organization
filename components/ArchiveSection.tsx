@@ -1,11 +1,13 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 import Image from "next/image";
 import { SectionHeading } from "@/components/SectionHeading";
 import { archiveData, featuredArchive } from "@/lib/archiveData";
 
 export function ArchiveSection() {
+  const t = useTranslations("Archive");
   const [showAll, setShowAll] = useState(false);
 
   const displayedYears = showAll ? archiveData : featuredArchive;
@@ -14,12 +16,8 @@ export function ArchiveSection() {
     <section className="cusec-section cusec-archive-section" id="archive">
       <div className="cusec-section__inner">
         <SectionHeading
-          title={
-            <>
-              Past <em>Conferences</em>
-            </>
-          }
-          lede="Explore over two decades of CUSEC history, speakers, and events."
+          title={t.rich("heading", { em: (chunks) => <em>{chunks}</em> })}
+          lede={t("lede")}
           align="left"
         />
 
@@ -31,18 +29,18 @@ export function ArchiveSection() {
                   <div className="cusec-archive-item__logo">
                     <Image
                       src={item.logo}
-                      alt={`CUSEC ${item.year} Logo`}
+                      alt={t("logoAlt", { year: item.year })}
                       quality={95}
                       sizes="56px"
                     />
                   </div>
                   <h3>{item.title}</h3>
                 </div>
-                {!item.url && <span className="cusec-archive-item__badge">Archived</span>}
+                {!item.url && <span className="cusec-archive-item__badge">{t("archived")}</span>}
               </div>
 
               <div className="cusec-archive-item__content">
-                <p>{item.url ? item.info : item.detailedInfo}</p>
+                <p>{item.hasDetailedInfo ? t(`detailed.${item.year}`) : t(`info.${item.year}`)}</p>
                 {item.url && (
                   <a
                     href={item.url}
@@ -50,7 +48,7 @@ export function ArchiveSection() {
                     rel="noopener noreferrer"
                     className="cusec-archive-link"
                   >
-                    Visit Site{" "}
+                    {t("visitSite")}{" "}
                     <span aria-hidden="true" className="cusec-button-link__arrow">
                       -&gt;
                     </span>
@@ -69,7 +67,7 @@ export function ArchiveSection() {
                 onClick={() => setShowAll(true)}
                 className="cusec-archive-more-btn"
               >
-                See Full Archive
+                {t("seeFullArchive")}
               </button>
             ) : (
               <button
@@ -77,7 +75,7 @@ export function ArchiveSection() {
                 onClick={() => setShowAll(false)}
                 className="cusec-archive-more-btn"
               >
-                See Less
+                {t("seeLess")}
               </button>
             )}
           </div>
