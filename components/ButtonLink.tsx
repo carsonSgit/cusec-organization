@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 
 type ButtonLinkProps = {
   href: string;
@@ -6,12 +6,26 @@ type ButtonLinkProps = {
 };
 
 export function ButtonLink({ href, children }: ButtonLinkProps) {
-  return (
-    <Link className="cusec-button-link" href={href}>
+  const content = (
+    <>
       <span>{children}</span>
       <span aria-hidden="true" className="cusec-button-link__arrow">
         -&gt;
       </span>
+    </>
+  );
+
+  if (href.startsWith("#") || /^https?:\/\//.test(href)) {
+    return (
+      <a className="cusec-button-link" href={href}>
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link className="cusec-button-link" href={href}>
+      {content}
     </Link>
   );
 }

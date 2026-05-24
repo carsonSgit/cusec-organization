@@ -11,7 +11,7 @@ export function TestimonialsGrid({ testimonials }: TestimonialsGridProps) {
     <Section className="cusec-testimonials-section">
       <div className="cusec-testimonials-grid">
         {testimonials.map((testimonial) => (
-          <TestimonialQuote key={testimonial.attribution} testimonial={testimonial} />
+          <TestimonialQuote key={testimonial.id} testimonial={testimonial} />
         ))}
       </div>
     </Section>

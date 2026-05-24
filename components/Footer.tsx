@@ -1,4 +1,8 @@
+import { useTranslations } from "next-intl";
+
 export function Footer() {
+  const t = useTranslations("Footer");
+
   return (
     <footer className="cusec-footer">
       <div className="cusec-footer__inner">
@@ -32,7 +36,7 @@ export function Footer() {
           </a>
         </div>
         <div className="cusec-footer__copyright">
-          <p>Copyright 2002-2026. All rights reserved.</p>
+          <p>{t("copyright")}</p>
         </div>
       </div>
     </footer>
