@@ -239,6 +239,7 @@ a {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 35%;
   filter: grayscale(1) contrast(1.04);
 }
 
@@ -632,7 +633,8 @@ a {
 
 .cusec-historic-sponsor--mosaic .cusec-archive-item__header {
   min-height: clamp(4rem, 6vw, 5rem);
-  border-bottom-color: rgba(34, 34, 34, 0.16);
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .cusec-historic-sponsor--mosaic .cusec-historic-sponsor__brand {
@@ -660,9 +662,6 @@ a {
   height: clamp(2.35rem, 3.8vw, 3.1rem);
 }
 
-.cusec-historic-sponsor--mosaic .cusec-archive-item__brand h3 {
-  font-size: clamp(1.15rem, 1.75vw, 1.45rem);
-}
 
 .cusec-historic-sponsor--mosaic .cusec-archive-item__content {
   gap: 0.6rem;
@@ -810,7 +809,6 @@ a {
 .cusec-marquee-track {
   display: flex;
   align-items: center;
-  gap: clamp(4rem, 8vw, 8rem);
   width: max-content;
   will-change: transform;
 }
@@ -834,6 +832,11 @@ a {
 .cusec-marquee-logo {
   max-width: 12.8rem;
   height: clamp(3.2rem, 6.4vw, 4.8rem);
+}
+
+/* Higher specificity so the gap wins over .cusec-logo-tile's `margin: 0 auto`. */
+.cusec-marquee-track .cusec-marquee-logo {
+  margin-right: clamp(4rem, 8vw, 8rem);
 }
 
 .cusec-sponsors-actions {
@@ -873,7 +876,7 @@ a {
   color: var(--color-ink);
 }
 
-.cusec-school-item {
+.cusec-logo-tile {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -885,11 +888,11 @@ a {
   transition: opacity 200ms ease;
 }
 
-.cusec-school-item:hover {
+.cusec-logo-tile:hover {
   opacity: 1;
 }
 
-.cusec-school-item img {
+.cusec-logo-tile img {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -897,9 +900,7 @@ a {
 
 @media (prefers-reduced-motion: reduce) {
   .cusec-marquee-track {
-    animation: none;
-    transform: none;
-    will-change: auto;
+    animation-duration: 120s;
   }
 }
 
@@ -923,7 +924,6 @@ a {
 .cusec-speakers-carousel__track {
   display: flex;
   align-items: stretch;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
   width: max-content;
   will-change: transform;
   animation: scroll-left 60s linear infinite;
@@ -939,6 +939,7 @@ a {
   flex-direction: column;
   gap: 0.9rem;
   width: clamp(12rem, 22vw, 15rem);
+  margin-right: clamp(1.5rem, 3vw, 2.5rem);
   text-decoration: none;
   color: inherit;
 }
@@ -978,10 +979,7 @@ a {
 
 @media (prefers-reduced-motion: reduce) {
   .cusec-speakers-carousel__track {
-    animation: none;
-    transform: none;
-    will-change: auto;
-    flex-wrap: wrap;
+    animation-duration: 150s;
   }
 }
 
@@ -1249,7 +1247,8 @@ a {
 
 .cusec-school-archive-item--mosaic .cusec-archive-item__header {
   min-height: clamp(4rem, 6vw, 5rem);
-  border-bottom-color: rgba(34, 34, 34, 0.16);
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
 .cusec-school-archive-item--mosaic .cusec-school-archive-item__brand {
@@ -1309,6 +1308,10 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: clamp(1rem, 3vw, 2.5rem);
+}
+
+.cusec-navbar__inner--no-wordmark {
+  justify-content: flex-end;
 }
 
 .cusec-navbar__wordmark {
@@ -1495,7 +1498,7 @@ a {
   }
 
   .cusec-stats {
-    width: min(100%, 18ch);
+    width: min(100%, 24ch);
   }
 
   .cusec-testimonials-grid,
@@ -1525,7 +1528,7 @@ a {
     --type-subtitle: clamp(0.9rem, 4vw, 1.1rem);
     --type-body: 1.18rem;
     --type-quote: 1.12rem;
-    --type-stats: clamp(1.75rem, 10vw, 2.55rem);
+    --type-stats: clamp(1.5rem, 8vw, 2rem);
   }
 
   .cusec-section {
@@ -1563,7 +1566,7 @@ a {
   }
 
   .cusec-image-band {
-    aspect-ratio: 1.45 / 1;
+    aspect-ratio: 1.9 / 1;
   }
 
   .cusec-testimonial {
@@ -1581,14 +1584,13 @@ a {
   }
 
   .cusec-historic-sponsors-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .cusec-summary-layout {
     grid-template-columns: 1fr;
   }
 
-  .cusec-summary-pie,
   .cusec-summary-pie__legend {
     grid-template-columns: 1fr;
   }
@@ -1612,7 +1614,7 @@ a {
   }
 
   .cusec-schools-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -1677,10 +1679,10 @@ a {
   color: var(--color-ink);
   background: transparent;
   border: 1px solid color-mix(in srgb, var(--color-ink) 25%, transparent);
-  border-radius: 999px;
   padding: 0.3rem 1.6rem 0.3rem 0.7rem;
   cursor: pointer;
   appearance: none;
+  border-radius: 4px;
   background-image: linear-gradient(45deg, transparent 50%, var(--color-ink) 50%),
     linear-gradient(135deg, var(--color-ink) 50%, transparent 50%);
   background-position:

@@ -26,7 +26,7 @@ function MarqueeRow({ direction, onLogoSettled, rowId, sponsors }: MarqueeRowPro
         const logoKey = `${rowId}-${i}-${sponsor.name}`;
 
         return (
-          <div key={logoKey} className="cusec-school-item cusec-marquee-logo" title={sponsor.name}>
+          <div key={logoKey} className="cusec-logo-tile cusec-marquee-logo" title={sponsor.name}>
             <Image
               src={sponsor.logo}
               alt={t("logoAlt", { name: sponsor.name })}

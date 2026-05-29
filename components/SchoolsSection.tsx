@@ -13,13 +13,16 @@ function SchoolCard({ school }: { school: School }) {
       <div className="cusec-archive-item__header">
         <div className="cusec-archive-item__brand cusec-school-archive-item__brand">
           {school.logo ? (
-            <LogoTile name={school.name} logo={school.logo} variant="compact-left" />
-          ) : null}
-          <h3>
-            <a href={school.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
-              {school.name}
+            <a href={school.url} target="_blank" rel="noopener noreferrer">
+              <LogoTile name={school.name} logo={school.logo} variant="compact-left" />
             </a>
-          </h3>
+          ) : (
+            <h3>
+              <a href={school.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+                {school.name}
+              </a>
+            </h3>
+          )}
         </div>
       </div>
     </article>
