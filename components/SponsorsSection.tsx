@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { ButtonLink } from "@/components/ButtonLink";
 import { SectionHeading } from "@/components/SectionHeading";
 import { sponsorMarqueeRows, type Sponsor } from "@/lib/sponsorsData";
@@ -18,7 +18,7 @@ type MarqueeRowProps = {
 
 function MarqueeRow({ direction, onLogoSettled, rowId, sponsors }: MarqueeRowProps) {
   const t = useTranslations("Sponsors");
-  const repeatedSponsors = [...sponsors, ...sponsors];
+  const repeatedSponsors = useMemo(() => [...sponsors, ...sponsors], [sponsors]);
 
   return (
     <div className={`cusec-marquee-track cusec-marquee-track--${direction}`}>
@@ -51,21 +51,27 @@ function MarqueeRow({ direction, onLogoSettled, rowId, sponsors }: MarqueeRowPro
 
 export function SponsorsSection() {
   const t = useTranslations("Sponsors");
-  const [settledLogoKeys, setSettledLogoKeys] = useState<Set<string>>(() => new Set());
   const totalLogoCount = (sponsorMarqueeRows.top.length + sponsorMarqueeRows.bottom.length) * 2;
-  const isMarqueeReady = settledLogoKeys.size >= totalLogoCount;
 
-  const handleLogoSettled = useCallback((key: string) => {
-    setSettledLogoKeys((currentKeys) => {
-      if (currentKeys.has(key)) {
-        return currentKeys;
+  // Track settled logos in a ref so each image load doesn't re-render the whole
+  // marquee. Only flip the boolean (one render) once every logo has settled.
+  const settledLogoKeys = useRef<Set<string>>(new Set());
+  const [isMarqueeReady, setIsMarqueeReady] = useState(false);
+
+  const handleLogoSettled = useCallback(
+    (key: string) => {
+      if (settledLogoKeys.current.has(key)) {
+        return;
       }
 
-      const nextKeys = new Set(currentKeys);
-      nextKeys.add(key);
-      return nextKeys;
-    });
-  }, []);
+      settledLogoKeys.current.add(key);
+
+      if (settledLogoKeys.current.size >= totalLogoCount) {
+        setIsMarqueeReady(true);
+      }
+    },
+    [totalLogoCount],
+  );
 
   return (
     <section className="cusec-section cusec-sponsors-section" id="sponsors">
