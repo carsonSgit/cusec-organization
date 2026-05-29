@@ -287,6 +287,7 @@
   },
   "SchoolsBrowser": {
     "summary": "Summary",
+    "summaryDescription": "Schools from all regions represented by CUSEC attendees over the years.",
     "regionDescription": "Institutions from {region} represented by CUSEC attendees over the years.",
     "note": "This historical list is not a current-year roster or formal school partnership directory.",
     "summaryAria": "Historic summary",

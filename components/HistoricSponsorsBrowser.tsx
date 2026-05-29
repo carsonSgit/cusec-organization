@@ -319,8 +319,6 @@ function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
           rel="noopener noreferrer"
         >
           <LogoTile name={sponsor.name} logo={sponsor.logo} variant="compact-left" />
-
-          <h3>{sponsor.name}</h3>
         </a>
       </div>
 

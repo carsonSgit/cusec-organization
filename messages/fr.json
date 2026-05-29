@@ -196,6 +196,7 @@
   },
   "SchoolsBrowser": {
     "summary": "Sommaire",
+    "summaryDescription": "Établissements de toutes les régions représentés par les participants de CUSEC au fil des ans.",
     "regionDescription": "Établissements de {region} représentés par les participants de CUSEC au fil des ans.",
     "note": "Cette liste historique n’est pas un registre de l’année en cours ni un répertoire officiel de partenariats scolaires.",
     "summaryAria": "Sommaire historique",
