@@ -4,12 +4,7 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { Link, usePathname } from "@/i18n/navigation";
-
-const navLinks = [
-  { href: "/past-speakers", key: "pastSpeakers" },
-  { href: "/participant-schools", key: "participantSchools" },
-  { href: "/historic-sponsors", key: "historicSponsors" },
-] as const;
+import { navLinks } from "@/lib/navLinks";
 
 export function Navbar() {
   const t = useTranslations("Nav");

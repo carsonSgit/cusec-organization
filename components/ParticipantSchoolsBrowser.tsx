@@ -2,40 +2,13 @@
 
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { LogoTile } from "@/components/LogoTile";
 import { ParticipantSchoolsSummary } from "@/components/ParticipantSchoolsSummary";
-import type { Region, School } from "@/lib/schoolsData";
+import { SchoolCard } from "@/components/SchoolCard";
+import type { Region } from "@/lib/schoolsData";
 
 type ParticipantSchoolsBrowserProps = {
   regions: Region[];
 };
-
-function SchoolCard({ school }: { school: School }) {
-  return (
-    <article className="cusec-archive-item cusec-school-archive-item cusec-school-archive-item--mosaic">
-      <div className="cusec-archive-item__header">
-        <div className="cusec-archive-item__brand cusec-school-archive-item__brand">
-          {school.logo ? (
-            <a href={school.url} target="_blank" rel="noopener noreferrer">
-              <LogoTile name={school.name} logo={school.logo} variant="compact-left" />
-            </a>
-          ) : (
-            <h3>
-              <a
-                href={school.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ textDecoration: "none" }}
-              >
-                {school.name}
-              </a>
-            </h3>
-          )}
-        </div>
-      </div>
-    </article>
-  );
-}
 
 export function ParticipantSchoolsBrowser({ regions }: ParticipantSchoolsBrowserProps) {
   const t = useTranslations("SchoolsBrowser");

@@ -9,19 +9,12 @@ import { featuredSpeakers, speakersData, type Speaker } from "@/lib/speakersData
 function SpeakerCard({ speaker, duplicate }: { speaker: Speaker; duplicate?: boolean }) {
   const t = useTranslations("Speakers");
 
-  return (
-    <a
-      href={speaker.url}
-      className="cusec-speaker-card"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-hidden={duplicate}
-      tabIndex={duplicate ? -1 : undefined}
-    >
+  const cardBody = (
+    <>
       <div className="cusec-speaker-card__photo">
         <Image
           src={speaker.image}
-          alt={speaker.name}
+          alt={duplicate ? "" : speaker.name}
           fill
           sizes="220px"
           quality={95}
@@ -30,6 +23,27 @@ function SpeakerCard({ speaker, duplicate }: { speaker: Speaker; duplicate?: boo
       </div>
       <span className="cusec-speaker-card__name">{speaker.name}</span>
       <span className="cusec-speaker-card__bio">{t(`bios.${speaker.name}`)}</span>
+    </>
+  );
+
+  // Duplicate cards exist only to make the marquee loop seamlessly, so they are
+  // rendered as inert decoration rather than empty-to-assistive-tech links.
+  if (duplicate) {
+    return (
+      <div className="cusec-speaker-card" aria-hidden="true">
+        {cardBody}
+      </div>
+    );
+  }
+
+  return (
+    <a
+      href={speaker.url}
+      className="cusec-speaker-card"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {cardBody}
       <span className="cusec-sr-only"> {t("srAbout", { name: speaker.name })}</span>
     </a>
   );
