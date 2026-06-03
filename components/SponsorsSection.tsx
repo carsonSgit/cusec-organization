@@ -6,6 +6,7 @@ import { ButtonLink } from "@/components/ButtonLink";
 import { MarqueeRow } from "@/components/MarqueeRow";
 import { SectionHeading } from "@/components/SectionHeading";
 import { sponsorMarqueeRows } from "@/lib/sponsorsData";
+import { useInView } from "@/lib/useInView";
 
 const totalLogoCount = (sponsorMarqueeRows.top.length + sponsorMarqueeRows.bottom.length) * 2;
 
@@ -16,6 +17,8 @@ export function SponsorsSection() {
   // marquee. Only flip the boolean (one render) once every logo has settled.
   const settledLogoKeys = useRef<Set<string>>(new Set());
   const [isMarqueeReady, setIsMarqueeReady] = useState(false);
+
+  const { inView, ref: marqueeRef } = useInView<HTMLDivElement>();
 
   const handleLogoSettled = useCallback((key: string) => {
     if (settledLogoKeys.current.has(key)) {
@@ -39,9 +42,10 @@ export function SponsorsSection() {
         />
 
         <div
+          ref={marqueeRef}
           className={`cusec-marquee-container${
             isMarqueeReady ? " cusec-marquee-container--ready" : ""
-          }`}
+          }${inView ? " cusec-marquee-container--in-view" : ""}`}
           aria-busy={!isMarqueeReady}
         >
           <MarqueeRow

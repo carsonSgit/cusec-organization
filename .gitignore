@@ -4,3 +4,6 @@
 node_modules/
 .next
 .claude/
+# one-off asset-generation tooling
+scripts/.cache/
+scripts/node_modules/
