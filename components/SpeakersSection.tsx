@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ButtonLink } from "@/components/ButtonLink";
 import { SectionHeading } from "@/components/SectionHeading";
 import { featuredSpeakers, speakersData, type Speaker } from "@/lib/speakersData";
+import { useInView } from "@/lib/useInView";
 
 function SpeakerCard({ speaker, duplicate }: { speaker: Speaker; duplicate?: boolean }) {
   const t = useTranslations("Speakers");
@@ -37,12 +38,7 @@ function SpeakerCard({ speaker, duplicate }: { speaker: Speaker; duplicate?: boo
   }
 
   return (
-    <a
-      href={speaker.url}
-      className="cusec-speaker-card"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <a href={speaker.url} className="cusec-speaker-card" target="_blank" rel="noopener noreferrer">
       {cardBody}
       <span className="cusec-sr-only"> {t("srAbout", { name: speaker.name })}</span>
     </a>
@@ -52,6 +48,8 @@ function SpeakerCard({ speaker, duplicate }: { speaker: Speaker; duplicate?: boo
 export function SpeakersSection() {
   const t = useTranslations("Speakers");
   const carouselSpeakers = [...featuredSpeakers, ...featuredSpeakers];
+
+  const { inView, ref: carouselRef } = useInView<HTMLDivElement>();
 
   return (
     <section className="cusec-section cusec-speakers-section" id="speakers">
@@ -63,7 +61,10 @@ export function SpeakersSection() {
         />
       </div>
 
-      <div className="cusec-speakers-carousel">
+      <div
+        ref={carouselRef}
+        className={`cusec-speakers-carousel${inView ? " cusec-speakers-carousel--in-view" : ""}`}
+      >
         <div className="cusec-speakers-carousel__track">
           {carouselSpeakers.map((speaker, i) => (
             <SpeakerCard
