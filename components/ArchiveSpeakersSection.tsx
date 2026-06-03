@@ -31,7 +31,7 @@ export async function ArchiveSpeakersSection({
         {!hasContent && <p className="cusec-archive-placeholder">{t("noSpeakers")}</p>}
 
         {speakers.length > 0 && (
-          <div className="cusec-archive-list cusec-historic-sponsors-list">
+          <div className="cusec-archive-list cusec-historic-sponsors-list cusec-speakers-grid">
             {speakers.map((speaker, index) => (
               <SpeakerCard
                 key={`${speaker.name}-${index}`}
