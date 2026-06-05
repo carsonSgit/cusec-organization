@@ -1060,7 +1060,7 @@ a {
 }
 
 .cusec-archive-row__summary {
-  max-width: var(--measure);
+  max-width: min(90ch, 100%);
   margin: 0.15rem 0 0;
   color: var(--color-body);
   font-family: var(--font-editorial);
@@ -2126,26 +2126,27 @@ a {
 
 .cusec-archive-year-header__main {
   display: flex;
-  align-items: center;
-  gap: clamp(1.25rem, 4vw, 2.75rem);
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(1.5rem, 4vw, 2.75rem);
 }
 
 .cusec-archive-year-header__logo {
-  width: clamp(4.5rem, 10vw, 7rem);
-  height: clamp(4.5rem, 10vw, 7rem);
-  flex: 0 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .cusec-archive-year-header__logo img {
   width: 100%;
-  height: 100%;
+  height: clamp(11rem, 26vw, 19rem);
   object-fit: contain;
+  object-position: left center;
 }
 
 .cusec-archive-year-header__logo--framed {
-  padding: clamp(0.5rem, 1.2vw, 0.85rem);
-  border-radius: 6px;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  border-radius: 10px;
   background: var(--color-ink);
 }
 
@@ -2188,6 +2189,15 @@ a {
   font-family: var(--font-ui);
   font-size: clamp(1rem, 1.4vw, 1.2rem);
   color: var(--color-body);
+}
+
+.cusec-archive-year-header__summary {
+  max-width: min(90ch, 100%);
+  margin: clamp(1.4rem, 3vw, 2.2rem) 0 0;
+  color: var(--color-body);
+  font-family: var(--font-editorial);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.35;
 }
 
 .cusec-archive-prose p {

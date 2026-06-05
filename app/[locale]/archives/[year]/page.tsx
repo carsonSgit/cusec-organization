@@ -53,6 +53,7 @@ export default async function ArchiveYearPage({
           year={numericYear}
           logo={archiveYear.logo}
           theme={detail?.theme}
+          summary={detail?.summary}
           liveUrl={archiveYear.url}
           logoNeedsDarkBg={archiveYear.logoNeedsDarkBg}
         />
