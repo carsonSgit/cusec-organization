@@ -2138,13 +2138,16 @@ a {
 }
 
 .cusec-archive-year-header__logo img {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: clamp(11rem, 26vw, 19rem);
   object-fit: contain;
   object-position: left center;
 }
 
 .cusec-archive-year-header__logo--framed {
+  width: fit-content;
+  max-width: 100%;
   padding: clamp(1rem, 3vw, 2.5rem);
   border-radius: 10px;
   background: var(--color-ink);
