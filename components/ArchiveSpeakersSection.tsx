@@ -1,7 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SpeakerCard } from "@/components/SpeakerCard";
-import { curatedSpeakerNames } from "@/lib/archiveSpeakers";
 import { resolveArchiveUrl, type ArchiveTalk } from "@/lib/archiveYearsData";
 import type { Speaker } from "@/lib/speakersData";
 
@@ -37,9 +36,9 @@ export async function ArchiveSpeakersSection({
                 key={`${speaker.name}-${index}`}
                 speaker={speaker}
                 bio={
-                  curatedSpeakerNames.has(speaker.name)
+                  tSpeakers.has(`bios.${speaker.name}`)
                     ? tSpeakers(`bios.${speaker.name}`)
-                    : undefined
+                    : t("indexSummaryPlaceholder")
                 }
               />
             ))}

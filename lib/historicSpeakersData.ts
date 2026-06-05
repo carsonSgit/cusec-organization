@@ -25,7 +25,7 @@ export const historicSpeakersData: Record<number, string[]> = {
     "Florent Giraud",
     "Mukund Mauji",
     "Jocelyn Murphy",
-    "Maya Lehki",
+    "Maya Lekhi",
     "Victor Li",
     "Rabab Azeem",
     "Sophy Sun",
@@ -43,7 +43,7 @@ export const historicSpeakersData: Record<number, string[]> = {
     "Aaditya Chopra",
     "Claudiu Scotnotis",
     "Victor Li",
-    "Matthew Macra-Bovell",
+    "Matthew MacRae-Bovell",
     "Rue Sriharsha",
   ],
   2023: [

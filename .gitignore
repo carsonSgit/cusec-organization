@@ -7,3 +7,4 @@ node_modules/
 # one-off asset-generation tooling
 scripts/.cache/
 scripts/node_modules/
+.mcp.json
