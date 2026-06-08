@@ -5,12 +5,21 @@ import { speakersData, type Speaker } from "./speakersData";
 
 const archiveSpeakerNameAliases = new Map([
   ["Antonio Gutiérrez", "Antonio Gutierrez"],
-  ["Antonio GutiÃ©rrez", "Antonio Gutierrez"],
   ["Jocelyn Murphy", "Jocelyne Murphy"],
   ["Marcelo Ardilles", "Marcelo Ardiles"],
   ["Matthew MacRae-Bovell", "Matthew Macrae-Bovell"],
   ["Maya Lekhi", "Maya Lehki"],
   ["Prijan Keth", "Pirijan Keth"],
+  // Reconcile historic-list name variants with their scraped-data counterparts
+  // so each speaker renders once (with bio) instead of as an empty duplicate.
+  ["Guy Barette", "Guy Barrette"],
+  ["Gayle L. McDowell", "Gayle Laakmann McDowell"],
+  ["Dr. Brian Cantwell Smith", "Brian Cantwell Smith"],
+  ["Atefeh Farzindar Ph. D", "Atefeh Farzindar"],
+  ["Dr. Marcelo M. Wanderley", "Marcelo M. Wanderley"],
+  ["Dr. Paul Cisek", "Paul Cisek"],
+  ["Dr. Sabine Bergler", "Sabine Bergler"],
+  ["Prof. Sharief Oteafy", "Sharief Oteafy"],
 ]);
 
 const archiveSpeakerImageByName = new Map([
