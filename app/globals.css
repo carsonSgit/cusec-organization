@@ -2087,6 +2087,74 @@ a {
   letter-spacing: 0.012em;
 }
 
+/* ---------- Archive speaker layout: Profile rows ---------- */
+.cusec-speakers--rows {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.6rem, 3.2vw, 2.6rem) clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+}
+
+.cusec-speaker-row {
+  display: flex;
+  gap: clamp(0.9rem, 1.8vw, 1.25rem);
+  align-items: flex-start;
+}
+
+.cusec-speaker-row__photo {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(4.5rem, 8vw, 6rem);
+  height: clamp(4.5rem, 8vw, 6rem);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cusec-speaker-row__photo img {
+  border-radius: 8px;
+}
+
+.cusec-speaker-row__body {
+  min-width: 0;
+}
+
+.cusec-speaker-row__name {
+  margin: 0 0 0.2rem;
+  font-family: var(--font-ui);
+  font-size: clamp(1.1rem, 1.9vw, 1.35rem);
+  font-weight: 500;
+  color: var(--color-ink);
+  letter-spacing: 0.015em;
+}
+
+.cusec-speaker-row__title {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--color-body);
+}
+
+.cusec-speaker-row__talk {
+  margin: 0.15rem 0 0;
+  font-size: 0.88rem;
+  font-weight: 650;
+  color: var(--color-ink);
+}
+
+.cusec-speaker-row__bio {
+  margin: 0.55rem 0 0;
+  font-family: var(--font-editorial);
+  font-size: clamp(1rem, 1.15vw, 1.1rem);
+  line-height: 1.55;
+  letter-spacing: 0.006em;
+  color: var(--color-body);
+  max-width: 56ch;
+}
+
+@media (max-width: 600px) {
+  .cusec-speakers--rows {
+    grid-template-columns: 1fr;
+  }
+}
+
 .cusec-sr-only {
   position: absolute;
   width: 1px;
