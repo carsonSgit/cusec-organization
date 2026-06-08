@@ -8,8 +8,8 @@ import { ArchiveTeamSection } from "@/components/ArchiveTeamSection";
 import { ArchiveYearHeader } from "@/components/ArchiveYearHeader";
 import { Footer } from "@/components/Footer";
 import { PageShell } from "@/components/PageShell";
-import { getArchiveSpeakers } from "@/lib/archiveSpeakers";
 import { archiveData } from "@/lib/archiveData";
+import { getArchiveSpeakers } from "@/lib/archiveSpeakers";
 import { archiveYearDetails } from "@/lib/archiveYearsData";
 
 export function generateStaticParams() {

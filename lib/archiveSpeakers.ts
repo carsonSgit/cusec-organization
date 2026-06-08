@@ -1,6 +1,6 @@
 import placeholder from "../assets/speaker-photos/placeholder-speaker.svg";
 import { historicSpeakersData } from "./historicSpeakersData";
-import { speakersData, type Speaker } from "./speakersData";
+import { type Speaker, speakersData } from "./speakersData";
 
 const curatedByName = new Map(speakersData.map((s) => [s.name, s]));
 
