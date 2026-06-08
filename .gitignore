@@ -3,6 +3,7 @@
 .omx
 node_modules/
 .next
+tsconfig.tsbuildinfo
 .claude/
 # one-off asset-generation tooling
 scripts/.cache/
