@@ -1,5 +1,4 @@
 import type { StaticImageData } from "next/image";
-import { pickByKey } from "./pick";
 import aaronPatterson from "../assets/speaker-photos/aaron-patterson.png";
 import alexKarp from "../assets/speaker-photos/alex-karp.png";
 import alexisOhanian from "../assets/speaker-photos/alexis-ohanian.png";
@@ -10,6 +9,7 @@ import douglasCrockford from "../assets/speaker-photos/douglas-crackford.png";
 import gradyBooch from "../assets/speaker-photos/grady-booch.png";
 import gregKroahHartman from "../assets/speaker-photos/greg-kroah-hartman.png";
 import jeffAtwood from "../assets/speaker-photos/jeff-atwood.png";
+import jeffUllman from "../assets/speaker-photos/jeff-ullman.png";
 import joelSpolsky from "../assets/speaker-photos/joel-spolsky.png";
 import joellePineau from "../assets/speaker-photos/joelle-pineau.png";
 import juliaEvans from "../assets/speaker-photos/julia-evans.png";
@@ -57,6 +57,7 @@ import tjKlint from "../assets/speaker-photos/tj_klint.jpg";
 import vickyDesjardins from "../assets/speaker-photos/vicky_desjardins.jpg";
 import victorLi from "../assets/speaker-photos/victor_li.jpg";
 import zachHolman from "../assets/speaker-photos/zach_holman.jpg";
+import { pickByKey } from "./pick";
 
 export type Speaker = {
   name: string;
@@ -69,12 +70,7 @@ export type Speaker = {
   sourceUrl?: string;
 };
 
-function speaker(
-  name: string,
-  url: string,
-  image: StaticImageData,
-  year?: number,
-): Speaker {
+function speaker(name: string, url: string, image: StaticImageData, year?: number): Speaker {
   return { name, url, image, year };
 }
 

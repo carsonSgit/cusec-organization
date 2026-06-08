@@ -1,7 +1,7 @@
 import placeholder from "../assets/speaker-photos/placeholder-speaker.svg";
 import { scrapedArchiveSpeakersData } from "./archiveSpeakerDetailsData";
 import { historicSpeakersData } from "./historicSpeakersData";
-import { speakersData, type Speaker } from "./speakersData";
+import { type Speaker, speakersData } from "./speakersData";
 
 const archiveSpeakerNameAliases = new Map([
   ["Antonio Gutiérrez", "Antonio Gutierrez"],
