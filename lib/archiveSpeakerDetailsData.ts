@@ -1922,6 +1922,38 @@ export const scrapedArchiveSpeakersData: Record<number, Speaker[]> = {
       bio: "Sophy graduated from the University of Toronto in 2024 and started working full-time at HubSpot in Boston. She interned five times during undergrad and held two research assistantships.",
       sourceUrl: "https://2025.cusec.net/speakers",
     },
+    {
+      name: "Matthew Macrae-Bovell",
+      image: "/archive-speakers/2025/matthew-macrae-bovell.png",
+      year: 2025,
+      title: "Software Developer II at Jobber, Computer Science at Carleton University",
+      bio: "Carleton University computer science student and previous President of the Carleton Computer Science Society. Software Developer with 5+ years of experience across freelance, internships, and more. Interned with various startups as well as The Bank of Canada, Kinaxis, and RBC, followed by a two-year tenure at Shopify. Currently working as a Software Developer II at Jobber (a SAAS for service providers).",
+      sourceUrl: "https://2025.cusec.net/speakers",
+    },
+    {
+      name: "Bilal Ahktar",
+      image: "/archive-speakers/2025/bilal-ahktar.png",
+      year: 2025,
+      title: "Software Engineer at Cockroach Labs, Alumni UWaterloo Software Engineering",
+      bio: "Bilal is a Software Engineer at Cockroach Labs. He works on CockroachDB's log-structured merge-tree (LSM) based storage engine, and in the process he has built a deep appreciation for reliable, highly-performant code. He has experience dealing with things that can go wrong in large, production distributed systems, and he is eager to share this experience at CUSEC. An alumni of UWaterloo's Software Engineering program, he's dodged his fair share of geese on campus and now the only honks he gets are from his oncall pager app. Outside of work, Bilal is an avid skier, long-distance runner and an advocate for housing affordability in Toronto.",
+      sourceUrl: "https://2025.cusec.net/speakers",
+    },
+    {
+      name: "Gaia Noseworthy",
+      image: "/archive-speakers/2025/gaia-noseworthy.png",
+      year: 2025,
+      title: "M. Applied Mathematics at the University of Waterloo",
+      bio: "Gaia Noseworthy is a masters student of Applied Mathematics at the University of Waterloo. With a background in Computer Science, Mathematics, Physics, and Statistics, all at the University of New Brunswick, Gaia has built a life on local politics, research, and a love of learning. In their off-time, Gaia is known for podcasting, community outreach, and exploring their local city!",
+      sourceUrl: "https://2025.cusec.net/speakers",
+    },
+    {
+      name: "Tony Xu",
+      image: "/archive-speakers/2025/tony-xu.png",
+      year: 2025,
+      title: "MSc Electrical and COEN at McGill, SE from WesternU, Business from Ivey Business School",
+      bio: "Tony is a MSc electrical and compute engineering student at McGill researching GenAI. He holds a dual degree in software engineering from Western University and business from Ivey Business School. He is researching copyright-free diffusion models. His previous research was in plaque segmentation from ultrasound, optimal needle placement in brachytherapy, driver drowsiness detection, and tornado segmentation from satellite. He is working on a microbiome startup on a mission to take the guesswork out of skincare and provide a better alternative to antibiotics. His industry experience includes AI engineering, asset management, and software engineering.",
+      sourceUrl: "https://2025.cusec.net/speakers",
+    },
   ],
   "2026": [
     {
