@@ -2007,7 +2007,8 @@ a {
 }
 
 .cusec-speakers-grid {
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
   margin-top: 0;
   gap: clamp(1.4rem, 3vw, 2.5rem) clamp(1rem, 2.4vw, 1.75rem);
 }
@@ -2016,6 +2017,11 @@ a {
   .cusec-speakers-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.cusec-speakers-grid .cusec-historic-sponsor--mosaic {
+  grid-template-rows: auto auto auto;
+  align-self: start;
 }
 
 .cusec-speakers-grid .cusec-archive-item__header {
@@ -2037,12 +2043,44 @@ a {
   height: clamp(9rem, 18vw, 12rem);
 }
 
+.cusec-speakers-grid .cusec-speaker-photo img {
+  border-radius: 4px;
+}
+
 .cusec-speakers-grid .cusec-archive-item__brand {
   align-items: flex-start;
 }
 
 .cusec-speakers-grid .cusec-archive-item__brand h3 {
   letter-spacing: 0.015em;
+}
+
+.cusec-speakers-grid .cusec-archive-item__content {
+  flex: 0 1 auto;
+  justify-content: flex-start;
+}
+
+.cusec-speaker-meta {
+  display: grid;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.cusec-speaker-meta__title,
+.cusec-speaker-meta__talk {
+  margin: 0;
+  line-height: 1.45;
+}
+
+.cusec-speaker-meta__title {
+  color: var(--color-body);
+  font-size: 0.9rem;
+}
+
+.cusec-speaker-meta__talk {
+  color: var(--color-ink);
+  font-size: 0.88rem;
+  font-weight: 650;
 }
 
 .cusec-speakers-grid .cusec-archive-item__content p {

@@ -36,9 +36,10 @@ export async function ArchiveSpeakersSection({
                 key={`${speaker.name}-${index}`}
                 speaker={speaker}
                 bio={
-                  tSpeakers.has(`bios.${speaker.name}`)
+                  speaker.bio ??
+                  (tSpeakers.has(`bios.${speaker.name}`)
                     ? tSpeakers(`bios.${speaker.name}`)
-                    : t("indexSummaryPlaceholder")
+                    : speaker.title)
                 }
               />
             ))}

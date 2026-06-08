@@ -61,8 +61,12 @@ import zachHolman from "../assets/speaker-photos/zach_holman.jpg";
 export type Speaker = {
   name: string;
   url?: string;
-  image: StaticImageData;
+  image: StaticImageData | string;
   year?: number;
+  title?: string;
+  talkTitle?: string;
+  bio?: string;
+  sourceUrl?: string;
 };
 
 function speaker(
