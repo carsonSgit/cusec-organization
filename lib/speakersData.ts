@@ -9,7 +9,6 @@ import douglasCrockford from "../assets/speaker-photos/douglas-crackford.png";
 import gradyBooch from "../assets/speaker-photos/grady-booch.png";
 import gregKroahHartman from "../assets/speaker-photos/greg-kroah-hartman.png";
 import jeffAtwood from "../assets/speaker-photos/jeff-atwood.png";
-import jeffUllman from "../assets/speaker-photos/jeff-ullman.png";
 import joelSpolsky from "../assets/speaker-photos/joel-spolsky.png";
 import joellePineau from "../assets/speaker-photos/joelle-pineau.png";
 import juliaEvans from "../assets/speaker-photos/julia-evans.png";
