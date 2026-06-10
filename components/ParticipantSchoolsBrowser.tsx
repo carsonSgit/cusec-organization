@@ -5,7 +5,7 @@ import { useCallback, useMemo, useState } from "react";
 import { CanadaMap, type MapPin } from "@/components/CanadaMap";
 import { ParticipantSchoolsSummary } from "@/components/ParticipantSchoolsSummary";
 import { SchoolCard } from "@/components/SchoolCard";
-import { type Region, type School, schoolSlug } from "@/lib/schoolsData";
+import { type Region, type School, schoolColor, schoolSlug } from "@/lib/schoolsData";
 
 type ParticipantSchoolsBrowserProps = {
   regions: Region[];
@@ -18,6 +18,7 @@ function schoolsToPins(schools: School[]): MapPin[] {
     city: school.city,
     lat: school.lat,
     lon: school.lon,
+    color: schoolColor(school.name),
   }));
 }
 

@@ -1298,14 +1298,12 @@ a {
 
 .cusec-canada-map--interactive .cusec-canada-map__pin:hover .cusec-canada-map__pin-dot,
 .cusec-canada-map--interactive .cusec-canada-map__pin:focus-visible .cusec-canada-map__pin-dot {
-  fill: #b8951f;
   r: 5;
   stroke-width: 1.6;
   filter: url(#cusec-map-pin-glow);
 }
 
 .cusec-canada-map__pin--active .cusec-canada-map__pin-dot {
-  fill: #b8951f;
   stroke: var(--color-focus);
   stroke-width: 1.8;
   r: 5;

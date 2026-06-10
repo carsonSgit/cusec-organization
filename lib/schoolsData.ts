@@ -563,6 +563,76 @@ export const featuredRegions: Region[] = [
   },
 ];
 
+// Primary brand color per school (approximate hex of the main institutional color).
+// Used for the colored dots on the Canada map. Schools missing here fall back
+// to ink so the map still renders.
+const SCHOOL_COLORS: Record<string, string> = {
+  // Ontario
+  "University of Waterloo": "#FED34C",
+  "University of Toronto": "#002A5C",
+  "McMaster University": "#7A003C",
+  "Queen's University": "#B92335",
+  "Western University": "#4F2683",
+  "University of Ottawa": "#8C2233",
+  "Carleton University": "#C8102E",
+  "Toronto Metropolitan University": "#FFCB05",
+  "York University": "#E31837",
+  "University of Guelph": "#C20430",
+  "Wilfrid Laurier University": "#50298C",
+  "University of Windsor": "#0033A0",
+  "Ontario Tech University": "#003A70",
+  "Algonquin College": "#00853E",
+  "Centennial College": "#00803E",
+  "Fanshawe College": "#C8102E",
+  "Royal Military College": "#C8102E",
+  "Seneca Polytechnic": "#BB133E",
+  "Sheridan College": "#00337F",
+  "St. Andrew's College": "#002F5F",
+  // Quebec
+  "McGill University": "#ED1B2F",
+  "Concordia University": "#912338",
+  "Université de Montréal": "#0033A0",
+  "Polytechnique Montréal": "#003366",
+  "École de technologie supérieure (ÉTS)": "#E4002B",
+  "Université du Québec à Montréal": "#FFD200",
+  "Université Laval": "#E2231A",
+  "Université de Sherbrooke": "#00773D",
+  TÉLUQ: "#007A33",
+  "Bishop's University": "#6E1F2A",
+  "Dawson College": "#00529B",
+  "John Abbott College": "#003E7E",
+  "Vanier College": "#003B5C",
+  "Marianopolis College": "#003366",
+  "Collège Gérald-Godin": "#C8102E",
+  // British Columbia
+  "University of British Columbia": "#002145",
+  "Simon Fraser University": "#A6192E",
+  "University of Victoria": "#005493",
+  "Thompson Rivers University": "#003E7E",
+  // Prairies
+  "University of Alberta": "#007C41",
+  "University of Calgary": "#D6001C",
+  "University of Manitoba": "#582C83",
+  "University of Winnipeg": "#582C83",
+  "University of Regina": "#006F51",
+  "Athabasca University": "#007A53",
+  "Brandon University": "#5F2167",
+  "Southern Alberta Institute of Technology": "#C8102E",
+  "Red River College Polytechnic": "#003366",
+  // Atlantic
+  "Dalhousie University": "#FFCD00",
+  "University of New Brunswick": "#ED1C24",
+  "Université de Moncton": "#0033A0",
+  // Other
+  "University of Illinois at Urbana-Champaign": "#E84A27",
+  "Université Canada West": "#003C71",
+  "Union College": "#722F37",
+};
+
+export function schoolColor(name: string): string {
+  return SCHOOL_COLORS[name] ?? "#222222";
+}
+
 export function schoolSlug(name: string): string {
   return `school-${name
     .toLowerCase()

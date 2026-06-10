@@ -19,7 +19,11 @@ comments, and architecture reviews.
 - **Map pin** — a marker on the Canada map representing one School. Pins sharing a
   `city` are jittered around the city centroid with a faint stem; single-city pins sit
   on their true coordinates. Pin id is `schoolSlug(name)` so the participant-schools
-  page can scroll to the matching card on click.
+  page can scroll to the matching card on click. Pin fill is the school's primary
+  brand color, looked up via `schoolColor(name)` from the `SCHOOL_COLORS` map in
+  `lib/schoolsData.ts`; missing entries fall back to ink. Hover/active states preserve
+  the brand color and convey state via glow filter, larger radius, focus-stroke, and
+  pulse animation rather than a color swap.
 
 ## Architecture terms
 

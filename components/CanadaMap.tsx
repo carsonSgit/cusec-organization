@@ -15,6 +15,7 @@ export type MapPin = {
   city?: string;
   lat: number;
   lon: number;
+  color?: string;
 };
 
 type CanadaMapProps = {
@@ -174,7 +175,11 @@ export function CanadaMap({ pins, onPinClick, activeId, ariaLabel }: CanadaMapPr
               )}
               <g transform={`translate(${pin.dx}, ${pin.dy})`}>
                 <circle r={9} className="cusec-canada-map__pin-hit" />
-                <circle r={3.5} className="cusec-canada-map__pin-dot" />
+                <circle
+                  r={3.5}
+                  className="cusec-canada-map__pin-dot"
+                  style={pin.color ? { fill: pin.color } : undefined}
+                />
               </g>
               <title>{pin.city ? `${pin.name} — ${pin.city}` : pin.name}</title>
             </Marker>
