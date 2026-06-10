@@ -58,7 +58,8 @@
   "Schools": {
     "heading": "Desde todo el <em>país</em>",
     "lede": "Hemos recibido a estudiantes de una amplia variedad de universidades y colegios.",
-    "seeAll": "Ver todas las escuelas participantes"
+    "seeAll": "Ver todas las escuelas participantes",
+    "mapAria": "Mapa de Canadá con marcadores para cada escuela participante."
   },
   "Speakers": {
     "heading": "Ponentes <em>legendarios</em>",

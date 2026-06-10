@@ -58,7 +58,8 @@
   "Schools": {
     "heading": "来自<em>全国各地</em>",
     "lede": "我们迎来了来自各类大学和学院的学生。",
-    "seeAll": "查看所有参与院校"
+    "seeAll": "查看所有参与院校",
+    "mapAria": "加拿大地图，标有每所参与院校的位置。"
   },
   "Speakers": {
     "heading": "<em>传奇</em>讲者",
