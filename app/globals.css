@@ -1286,7 +1286,10 @@ a {
 }
 
 .cusec-canada-map__pin-dot {
-  fill: var(--color-ink);
+  /* Each pin's <g> sets --cusec-pin-color from the school's brand hex.
+     Tint it toward cream so the palette reads soft/editorial instead of
+     screaming saturated. Falls back to ink for pins without a color. */
+  fill: color-mix(in srgb, var(--cusec-pin-color, #222222) 62%, #f4ecd6 38%);
   stroke: var(--color-page);
   stroke-width: 1.2;
   transition:
@@ -2300,6 +2303,51 @@ a {
 @media (max-width: 600px) {
   .cusec-speakers--rows {
     grid-template-columns: 1fr;
+  }
+}
+
+/* --- Tooltip (Radix) --- */
+
+.cusec-tooltip {
+  z-index: 60;
+  max-width: 22rem;
+  padding: 0.45rem 0.7rem;
+  background: var(--color-ink);
+  color: var(--color-page);
+  border-radius: 4px;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  box-shadow: 0 6px 18px rgba(34, 34, 34, 0.18);
+  user-select: none;
+  animation: cusec-tooltip-in 140ms ease-out;
+  will-change: transform, opacity;
+}
+
+.cusec-tooltip[data-state="closed"],
+.cusec-tooltip[data-state="delayed-open"][data-side] {
+  animation-duration: 120ms;
+}
+
+.cusec-tooltip__arrow {
+  fill: var(--color-ink);
+}
+
+@keyframes cusec-tooltip-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cusec-tooltip {
+    animation: none;
   }
 }
 

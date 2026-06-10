@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import {
   ComposableMap,
   Geographies,
@@ -8,6 +9,7 @@ import {
   Marker,
   Sphere,
 } from "react-simple-maps";
+import { Tooltip, TooltipProvider } from "@/components/Tooltip";
 
 export type MapPin = {
   id: string;
@@ -73,119 +75,122 @@ export function CanadaMap({ pins, onPinClick, activeId, ariaLabel }: CanadaMapPr
   const jitteredPins = jitterByCity(pins);
 
   return (
-    <div
-      className={`cusec-canada-map${interactive ? " cusec-canada-map--interactive" : ""}`}
-      role="img"
-      aria-label={ariaLabel}
-    >
-      <ComposableMap
-        projection="geoAlbers"
-        projectionConfig={{
-          rotate: [98, 0, 0],
-          center: [0, 54.5],
-          parallels: [44, 58],
-          scale: 950,
-        }}
-        width={MAP_WIDTH}
-        height={MAP_HEIGHT}
-        style={{ width: "100%", height: "auto" }}
+    <TooltipProvider>
+      <div
+        className={`cusec-canada-map${interactive ? " cusec-canada-map--interactive" : ""}`}
+        role="img"
+        aria-label={ariaLabel}
       >
-        <defs>
-          <radialGradient id="cusec-map-land-gradient" cx="50%" cy="40%" r="75%">
-            <stop offset="0%" stopColor="rgba(255, 219, 74, 0.10)" />
-            <stop offset="55%" stopColor="rgba(34, 34, 34, 0.05)" />
-            <stop offset="100%" stopColor="rgba(34, 34, 34, 0.10)" />
-          </radialGradient>
-          <filter id="cusec-map-pin-glow" x="-200%" y="-200%" width="500%" height="500%">
-            <feGaussianBlur stdDeviation="2.5" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
+        <ComposableMap
+          projection="geoAlbers"
+          projectionConfig={{
+            rotate: [98, 0, 0],
+            center: [0, 54.5],
+            parallels: [44, 58],
+            scale: 950,
+          }}
+          width={MAP_WIDTH}
+          height={MAP_HEIGHT}
+          style={{ width: "100%", height: "auto" }}
+        >
+          <defs>
+            <radialGradient id="cusec-map-land-gradient" cx="50%" cy="40%" r="75%">
+              <stop offset="0%" stopColor="rgba(255, 219, 74, 0.10)" />
+              <stop offset="55%" stopColor="rgba(34, 34, 34, 0.05)" />
+              <stop offset="100%" stopColor="rgba(34, 34, 34, 0.10)" />
+            </radialGradient>
+            <filter id="cusec-map-pin-glow" x="-200%" y="-200%" width="500%" height="500%">
+              <feGaussianBlur stdDeviation="2.5" result="blur" />
+              <feMerge>
+                <feMergeNode in="blur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
 
-        <Sphere
-          id="cusec-map-sphere"
-          stroke="rgba(34, 34, 34, 0.18)"
-          strokeWidth={0.5}
-          fill="transparent"
-        />
+          <Sphere
+            id="cusec-map-sphere"
+            stroke="rgba(34, 34, 34, 0.18)"
+            strokeWidth={0.5}
+            fill="transparent"
+          />
 
-        <Graticule stroke="rgba(34, 34, 34, 0.07)" strokeWidth={0.4} step={[10, 10]} />
+          <Graticule stroke="rgba(34, 34, 34, 0.07)" strokeWidth={0.4} step={[10, 10]} />
 
-        <Geographies geography={GEO_URL}>
-          {({ geographies }) =>
-            geographies
-              .filter((geo) => geo.id === CANADA_ID)
-              .map((geo) => (
-                <Geography
-                  key={geo.rsmKey}
-                  geography={geo}
-                  className="cusec-canada-map__land"
-                  style={{
-                    default: { outline: "none" },
-                    hover: { outline: "none" },
-                    pressed: { outline: "none" },
-                  }}
-                />
-              ))
-          }
-        </Geographies>
-
-        {jitteredPins.map((pin) => {
-          const isActive = activeId === pin.id;
-          const handleClick = onPinClick ? () => onPinClick(pin.id) : undefined;
-
-          return (
-            <Marker
-              key={pin.id}
-              coordinates={[pin.lon, pin.lat]}
-              onClick={handleClick}
-              className={`cusec-canada-map__pin${isActive ? " cusec-canada-map__pin--active" : ""}`}
-              style={{
-                default: { cursor: interactive ? "pointer" : "default" },
-                hover: { cursor: interactive ? "pointer" : "default" },
-                pressed: { cursor: interactive ? "pointer" : "default" },
-              }}
-              tabIndex={interactive ? 0 : -1}
-              onKeyDown={
-                interactive
-                  ? (event: React.KeyboardEvent<SVGGElement>) => {
-                      if (event.key === "Enter" || event.key === " ") {
-                        event.preventDefault();
-                        onPinClick?.(pin.id);
-                      }
-                    }
-                  : undefined
-              }
-              aria-label={pin.city ? `${pin.name} — ${pin.city}` : pin.name}
-            >
-              {pin.clustered && (
-                <>
-                  <line
-                    x1={0}
-                    y1={0}
-                    x2={pin.dx}
-                    y2={pin.dy}
-                    className="cusec-canada-map__pin-stem"
+          <Geographies geography={GEO_URL}>
+            {({ geographies }) =>
+              geographies
+                .filter((geo) => geo.id === CANADA_ID)
+                .map((geo) => (
+                  <Geography
+                    key={geo.rsmKey}
+                    geography={geo}
+                    className="cusec-canada-map__land"
+                    style={{
+                      default: { outline: "none" },
+                      hover: { outline: "none" },
+                      pressed: { outline: "none" },
+                    }}
                   />
-                  <circle r={1.4} className="cusec-canada-map__pin-anchor" />
-                </>
-              )}
-              <g transform={`translate(${pin.dx}, ${pin.dy})`}>
-                <circle r={9} className="cusec-canada-map__pin-hit" />
-                <circle
-                  r={3.5}
-                  className="cusec-canada-map__pin-dot"
-                  style={pin.color ? { fill: pin.color } : undefined}
-                />
-              </g>
-              <title>{pin.city ? `${pin.name} — ${pin.city}` : pin.name}</title>
-            </Marker>
-          );
-        })}
-      </ComposableMap>
-    </div>
+                ))
+            }
+          </Geographies>
+
+          {jitteredPins.map((pin) => {
+            const isActive = activeId === pin.id;
+            const handleClick = onPinClick ? () => onPinClick(pin.id) : undefined;
+            const colorStyle = pin.color
+              ? ({ "--cusec-pin-color": pin.color } as CSSProperties)
+              : undefined;
+            const label = pin.city ? `${pin.name} — ${pin.city}` : pin.name;
+
+            return (
+              <Marker
+                key={pin.id}
+                coordinates={[pin.lon, pin.lat]}
+                onClick={handleClick}
+                className={`cusec-canada-map__pin${isActive ? " cusec-canada-map__pin--active" : ""}`}
+                style={{
+                  default: { cursor: interactive ? "pointer" : "default" },
+                  hover: { cursor: interactive ? "pointer" : "default" },
+                  pressed: { cursor: interactive ? "pointer" : "default" },
+                }}
+                tabIndex={interactive ? 0 : -1}
+                onKeyDown={
+                  interactive
+                    ? (event: React.KeyboardEvent<SVGGElement>) => {
+                        if (event.key === "Enter" || event.key === " ") {
+                          event.preventDefault();
+                          onPinClick?.(pin.id);
+                        }
+                      }
+                    : undefined
+                }
+                aria-label={label}
+              >
+                {pin.clustered && (
+                  <>
+                    <line
+                      x1={0}
+                      y1={0}
+                      x2={pin.dx}
+                      y2={pin.dy}
+                      className="cusec-canada-map__pin-stem"
+                    />
+                    <circle r={1.4} className="cusec-canada-map__pin-anchor" />
+                  </>
+                )}
+                <Tooltip label={label}>
+                  <g transform={`translate(${pin.dx}, ${pin.dy})`} style={colorStyle}>
+                    <circle r={9} className="cusec-canada-map__pin-hit" />
+                    <circle r={3.5} className="cusec-canada-map__pin-dot" />
+                  </g>
+                </Tooltip>
+              </Marker>
+            );
+          })}
+        </ComposableMap>
+      </div>
+    </TooltipProvider>
   );
 }
