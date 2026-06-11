@@ -24,8 +24,18 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, year } = await params;
   const t = await getTranslations({ locale, namespace: "Archives" });
+  const metadata = await getTranslations({ locale, namespace: "Metadata" });
+  const title = t("metaTitle", { year });
+  const description = archiveYearDetails[Number(year)]?.summary ?? metadata("description");
+
   return {
-    title: t("metaTitle", { year }),
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [{ url: "/og-image.png" }],
+    },
   };
 }
 
