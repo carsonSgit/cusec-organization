@@ -1,13 +1,12 @@
 import placeholder from "../assets/speaker-photos/placeholder-speaker.svg";
 import { scrapedArchiveSpeakersData } from "./archiveSpeakerDetailsData";
+import { assertArchiveSpeakerIntegrity, normalizeSpeakerName } from "./contentChecks";
 import { historicSpeakersData } from "./historicSpeakersData";
 import { type Speaker, speakersData } from "./speakersData";
 
 const archiveSpeakerNameAliases = new Map([
-  ["Antonio Gutiérrez", "Antonio Gutierrez"],
   ["Jocelyn Murphy", "Jocelyne Murphy"],
   ["Marcelo Ardilles", "Marcelo Ardiles"],
-  ["Matthew MacRae-Bovell", "Matthew Macrae-Bovell"],
   ["Maya Lekhi", "Maya Lehki"],
   ["Prijan Keth", "Pirijan Keth"],
   // Reconcile historic-list name variants with their scraped-data counterparts
@@ -30,6 +29,13 @@ const archiveSpeakerImageByName = new Map([
   ["zachholman", "/archive-speakers/2026/zach-holman.jpg"],
 ]);
 
+assertArchiveSpeakerIntegrity({
+  scrapedArchiveSpeakersData,
+  historicSpeakersData,
+  curatedSpeakerNames: speakersData.map((speaker) => speaker.name),
+  archiveSpeakerNameAliases,
+});
+
 const curatedByName = new Map(speakersData.map((s) => [s.name, s]));
 const curatedByCanonicalName = new Map(
   speakersData.map((speaker) => [canonicalSpeakerName(speaker.name), speaker]),
@@ -39,11 +45,7 @@ export const curatedSpeakerNames = new Set(speakersData.map((s) => s.name));
 
 function canonicalSpeakerName(name: string) {
   const aliasedName = archiveSpeakerNameAliases.get(name) ?? name;
-  return aliasedName
-    .normalize("NFD")
-    .replace(/[̀-ͯ]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "");
+  return normalizeSpeakerName(aliasedName);
 }
 
 function isPlaceholderScrapedSpeaker(speaker: Speaker) {
