@@ -10,6 +10,7 @@ import { Footer } from "@/components/Footer";
 import { PageShell } from "@/components/PageShell";
 import { archiveData } from "@/lib/archiveData";
 import { getArchiveSpeakers } from "@/lib/archiveSpeakers";
+import { getArchiveSponsors } from "@/lib/archiveSponsorsData";
 import { archiveYearDetails } from "@/lib/archiveYearsData";
 
 export function generateStaticParams() {
@@ -59,7 +60,7 @@ export default async function ArchiveYearPage({
         />
         <ArchiveSpeakersSection speakers={yearSpeakers} talks={detail?.talks ?? []} />
         <ArchiveTeamSection team={detail?.team ?? []} />
-        <ArchiveSponsorsSection />
+        <ArchiveSponsorsSection sponsors={getArchiveSponsors(numericYear)} />
         <ArchiveHighlightsSection
           highlights={detail?.highlights ?? []}
           liveUrl={archiveYear.url}
