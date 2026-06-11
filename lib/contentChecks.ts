@@ -14,26 +14,19 @@ type ArchiveSpeakerIntegrityInput = {
   scrapedArchiveSpeakersData: Record<number, SpeakerLike[]>;
   historicSpeakersData: Record<number, string[]>;
   curatedSpeakerNames: Iterable<string>;
-  archiveSpeakerNameAliases: Map<string, string>;
 };
 
 export function assertArchiveSpeakerIntegrity({
   scrapedArchiveSpeakersData,
   historicSpeakersData,
   curatedSpeakerNames,
-  archiveSpeakerNameAliases,
 }: ArchiveSpeakerIntegrityInput) {
   const violations: string[] = [];
-  const rawScrapedNames = new Set<string>();
-  const rawHistoricNames = new Set<string>();
-  const scrapedOrCuratedCanonicalNames = new Set<string>();
 
   for (const [year, speakers] of Object.entries(scrapedArchiveSpeakersData)) {
     const seenNames = new Map<string, string>();
 
     for (const speaker of speakers) {
-      rawScrapedNames.add(speaker.name);
-      scrapedOrCuratedCanonicalNames.add(normalizeSpeakerName(speaker.name));
       collectDuplicateNameViolation(
         violations,
         seenNames,
@@ -48,7 +41,6 @@ export function assertArchiveSpeakerIntegrity({
     const seenNames = new Map<string, string>();
 
     for (const name of names) {
-      rawHistoricNames.add(name);
       collectDuplicateNameViolation(
         violations,
         seenNames,
@@ -59,31 +51,15 @@ export function assertArchiveSpeakerIntegrity({
     }
   }
 
+  const seenCuratedNames = new Map<string, string>();
   for (const name of curatedSpeakerNames) {
-    scrapedOrCuratedCanonicalNames.add(normalizeSpeakerName(name));
-  }
-
-  for (const [alias, target] of archiveSpeakerNameAliases) {
-    if (!rawScrapedNames.has(alias) && !rawHistoricNames.has(alias)) {
-      violations.push(`archiveSpeakerNameAliases: dead alias key "${alias}"`);
-    }
-
-    const normalizedAlias = normalizeSpeakerName(alias);
-    const normalizedTarget = normalizeSpeakerName(target);
-
-    if (!scrapedOrCuratedCanonicalNames.has(normalizedTarget)) {
-      violations.push(
-        `archiveSpeakerNameAliases: alias "${alias}" targets missing speaker "${target}"`,
-      );
-    }
-
-    if (normalizedAlias === normalizedTarget) {
-      violations.push(`archiveSpeakerNameAliases: pointless alias "${alias}" -> "${target}"`);
-    }
-
-    if (archiveSpeakerNameAliases.has(target)) {
-      violations.push(`archiveSpeakerNameAliases: chained alias "${alias}" -> "${target}"`);
-    }
+    collectDuplicateNameViolation(
+      violations,
+      seenCuratedNames,
+      normalizeSpeakerName(name),
+      name,
+      "speakersData",
+    );
   }
 
   if (violations.length > 0) {

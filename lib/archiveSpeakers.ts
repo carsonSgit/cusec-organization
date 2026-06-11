@@ -4,23 +4,6 @@ import { assertArchiveSpeakerIntegrity, normalizeSpeakerName } from "./contentCh
 import { historicSpeakersData } from "./historicSpeakersData";
 import { type Speaker, speakersData } from "./speakersData";
 
-const archiveSpeakerNameAliases = new Map([
-  ["Jocelyn Murphy", "Jocelyne Murphy"],
-  ["Marcelo Ardilles", "Marcelo Ardiles"],
-  ["Maya Lekhi", "Maya Lehki"],
-  ["Prijan Keth", "Pirijan Keth"],
-  // Reconcile historic-list name variants with their scraped-data counterparts
-  // so each speaker renders once (with bio) instead of as an empty duplicate.
-  ["Guy Barette", "Guy Barrette"],
-  ["Gayle L. McDowell", "Gayle Laakmann McDowell"],
-  ["Dr. Brian Cantwell Smith", "Brian Cantwell Smith"],
-  ["Atefeh Farzindar Ph. D", "Atefeh Farzindar"],
-  ["Dr. Marcelo M. Wanderley", "Marcelo M. Wanderley"],
-  ["Dr. Paul Cisek", "Paul Cisek"],
-  ["Dr. Sabine Bergler", "Sabine Bergler"],
-  ["Prof. Sharief Oteafy", "Sharief Oteafy"],
-]);
-
 const archiveSpeakerImageByName = new Map([
   ["fatimataj", "/archive-speakers/2026/fatima-taj.jpg"],
   ["matthewmacraebovell", "/archive-speakers/2025/matthew-macrae-bovell.png"],
@@ -33,7 +16,6 @@ assertArchiveSpeakerIntegrity({
   scrapedArchiveSpeakersData,
   historicSpeakersData,
   curatedSpeakerNames: speakersData.map((speaker) => speaker.name),
-  archiveSpeakerNameAliases,
 });
 
 const curatedByName = new Map(speakersData.map((s) => [s.name, s]));
@@ -44,8 +26,7 @@ const curatedByCanonicalName = new Map(
 export const curatedSpeakerNames = new Set(speakersData.map((s) => s.name));
 
 function canonicalSpeakerName(name: string) {
-  const aliasedName = archiveSpeakerNameAliases.get(name) ?? name;
-  return normalizeSpeakerName(aliasedName);
+  return normalizeSpeakerName(name);
 }
 
 function isPlaceholderScrapedSpeaker(speaker: Speaker) {
