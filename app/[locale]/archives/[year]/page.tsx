@@ -10,6 +10,7 @@ import { Footer } from "@/components/Footer";
 import { PageShell } from "@/components/PageShell";
 import { archiveData } from "@/lib/archiveData";
 import { getArchiveSpeakers } from "@/lib/archiveSpeakers";
+import { getArchiveSponsors } from "@/lib/archiveSponsorsData";
 import { archiveYearDetails } from "@/lib/archiveYearsData";
 
 export function generateStaticParams() {
@@ -23,8 +24,18 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, year } = await params;
   const t = await getTranslations({ locale, namespace: "Archives" });
+  const metadata = await getTranslations({ locale, namespace: "Metadata" });
+  const title = t("metaTitle", { year });
+  const description = archiveYearDetails[Number(year)]?.summary ?? metadata("description");
+
   return {
-    title: t("metaTitle", { year }),
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [{ url: "/og-image.png" }],
+    },
   };
 }
 
@@ -59,7 +70,7 @@ export default async function ArchiveYearPage({
         />
         <ArchiveSpeakersSection speakers={yearSpeakers} talks={detail?.talks ?? []} />
         <ArchiveTeamSection team={detail?.team ?? []} />
-        <ArchiveSponsorsSection />
+        <ArchiveSponsorsSection sponsors={getArchiveSponsors(numericYear)} />
         <ArchiveHighlightsSection
           highlights={detail?.highlights ?? []}
           liveUrl={archiveYear.url}
