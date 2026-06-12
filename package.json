@@ -24,7 +24,6 @@
     "start": "next start",
     "lint": "biome lint .",
     "format": "biome format --write .",
-    "validate": "node scripts/validate-content.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
