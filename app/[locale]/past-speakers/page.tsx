@@ -74,6 +74,7 @@ export default async function PastSpeakersPage({
               title={t.rich("heading", { em: (chunks) => <em>{chunks}</em> })}
               lede={t("lede")}
               align="left"
+              as="h1"
             />
 
             <PastSpeakersBrowser speakers={speakersData} />
