@@ -41,7 +41,7 @@ export default async function PastSpeakersPage({
   const speakersJsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: t("heading").replace(/<\/?em>/g, ""),
+    name: t.raw("heading").replace(/<\/?em>/g, ""),
     description: t("lede"),
     url: pageUrl,
     mainEntity: {
